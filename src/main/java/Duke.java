@@ -12,7 +12,7 @@ public class Duke {
         System.out.print("Hung:\n\t");
         line = in.nextLine();
         while (!line.equalsIgnoreCase("bye")){
-            System.out.println("The You-know-who:\n" + "\t" + line);
+            System.out.println("The You-know-who:\n\t" + line);
             System.out.print("Hung:\n\t");
             line = in.nextLine();
         }
