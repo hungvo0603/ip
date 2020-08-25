@@ -17,7 +17,8 @@ public class Duke {
             line = in.nextLine();
         }
 
-        System.out.println("The You-know-who:\n\tBye. Hope to see you again soon!");
+        System.out.println("The You-know-who:");
+        System.out.println("\t~~Dead is like a wind, always by my side~~");
     }
 
 }
