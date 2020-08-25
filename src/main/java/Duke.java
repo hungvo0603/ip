@@ -1,11 +1,23 @@
+import java.util.Scanner;
+
 public class Duke {
 
     public static void main(String[] args) {
-        System.out.println("-----------------------------------------");
-        System.out.println(" Hello! I'm Duke\n What can I do for you?");
-        System.out.println("-----------------------------------------");
-        System.out.println(" Bye. Hope to see you again soon!");
-        System.out.println("-----------------------------------------");
+        String line;
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("The You-know-who:");
+        System.out.println("\tHello! I'm The You-know-who\n\tWhat are your orders?");
+
+        System.out.print("Hung:\n\t");
+        line = in.nextLine();
+        while (!line.equalsIgnoreCase("bye")){
+            System.out.println("The You-know-who:\n" + "\t" + line);
+            System.out.print("Hung:\n\t");
+            line = in.nextLine();
+        }
+
+        System.out.println("The You-know-who:\n\tBye. Hope to see you again soon!");
     }
 
 }
