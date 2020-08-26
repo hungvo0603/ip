@@ -23,7 +23,7 @@ public class Duke {
                 line = in.nextLine();
             } else if (line.toLowerCase().startsWith("done")) {
                 int taskNumber = Integer.parseInt(line.substring(5)) - 1;
-                if (taskNumber > 0 && taskNumber < taskCount) {
+                if (taskNumber >= 0 && taskNumber < taskCount) {
                     tasks[taskNumber].setDone();
                     System.out.println("The You-know-who:");
                     System.out.println("\tNice! I've mark this task as done:");
