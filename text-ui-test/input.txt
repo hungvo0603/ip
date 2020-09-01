@@ -1,0 +1,10 @@
+hello
+todo iP
+deadline tP /by before tutorial at Wed 11pm
+list
+event CS2113T project meeting /at Wed 4pm on Zoom
+list
+done 1
+done 3
+list
+bye
