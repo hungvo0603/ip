@@ -4,6 +4,5 @@ public enum Command {
     DEADLINE,
     EVENT,
     DONE,
-    BYE,
-    ERROR;
+    BYE;
 }
