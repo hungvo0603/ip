@@ -1,3 +1,13 @@
+package duke;
+
+import duke.command.Command;
+import duke.exception.DukeException;
+import duke.exception.ErrorMessage;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.Todo;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -153,7 +163,7 @@ public class Duke {
         System.out.println("-----------------------------------------");
         System.out.println("!bot:\nAdded: " + task.toString());
         if (taskCount <= 1) {
-            System.out.println("You now have " + taskCount + " task in the list.");
+            System.out.println("You now have " + taskCount + " duke.task in the list.");
         } else {
             System.out.println("You now have " + taskCount + " tasks in the list.");
         }
@@ -163,7 +173,7 @@ public class Duke {
     public static void printSetTaskDoneMessage (Task task) {
         System.out.println("-----------------------------------------");
         System.out.println("!bot:");
-        System.out.println("Nice! I've mark this task as done:");
+        System.out.println("Nice! I've mark this duke.task as done:");
         System.out.printf(" %s\n", task.toString());
         System.out.println("-----------------------------------------");
     }
@@ -174,7 +184,7 @@ public class Duke {
         System.out.println("!bot:");
 
         if (taskCount == 0) {
-            System.out.println("There is no task in the list for now.");
+            System.out.println("There is no duke.task in the list for now.");
             System.out.println("-----------------------------------------");
             return;
         }
