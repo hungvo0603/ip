@@ -1,11 +1,11 @@
-public class Task {
+public abstract class Task {
 
     protected String description;
     protected boolean isDone;
 
     protected static int numberOfTask = 0;
 
-    public Task(String description){
+    public Task (String description) {
         this.description = description;
         this.isDone = false;
     }
@@ -18,7 +18,7 @@ public class Task {
         return isDone;
     }
 
-    public void setDescription(String description) {
+    public void setDescription (String description) {
         this.description = description;
     }
 
@@ -30,11 +30,11 @@ public class Task {
         return numberOfTask;
     }
 
-    public static void setNumberOfTask(int taskCount){
+    public static void setNumberOfTask (int taskCount) {
         numberOfTask = taskCount;
     }
 
-    public static void incrementNumberOfTask(){
+    public static void incrementNumberOfTask() {
         numberOfTask++;
     }
 
