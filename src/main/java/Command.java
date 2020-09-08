@@ -5,5 +5,5 @@ public enum Command {
     EVENT,
     DONE,
     BYE,
-    ERROR;
+    ERROR
 }

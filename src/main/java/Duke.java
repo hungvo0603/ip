@@ -6,7 +6,7 @@ public class Duke {
     private static final int MAX_TASKS = 100;
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void addDeadlineTask(Task[] tasks, String command, String delimiter) {
+    public static void addDeadlineTask (Task[] tasks, String command, String delimiter) {
         try {
             String description = getDeadlineAndEventDescription(command, delimiter);
             String time = getDeadlineAndEventTime(command, delimiter);
@@ -20,7 +20,7 @@ public class Duke {
         }
     }
 
-    public static void addEventTask(Task[] tasks, String command, String delimiter) {
+    public static void addEventTask (Task[] tasks, String command, String delimiter) {
         try {
             String description = getDeadlineAndEventDescription(command, delimiter);
             String time = getDeadlineAndEventTime(command, delimiter);
@@ -34,7 +34,7 @@ public class Duke {
         }
     }
 
-    public static void addTodoTask(String command, Task[] tasks) {
+    public static void addTodoTask (String command, Task[] tasks) {
         try {
             String description = getTodoDescription(command);
             Task t = new Todo(description);
@@ -48,14 +48,14 @@ public class Duke {
     }
 
     public static String getDeadlineAndEventTime (String command, String delimiter) throws DukeException {
-        String[] content = command.split(delimiter, 2);
-        if (content.length <= 1) {
+        String[] descriptions = command.split(delimiter, 2);
+        if (descriptions.length <= 1) {
             throw new DukeException();
-        } else if (content[1].trim().length() == 0) {
+        } else if (descriptions[1].trim().length() == 0) {
             throw new DukeException();
         }
 
-        return content[1].trim();
+        return descriptions[1].trim();
     }
 
     public static String getDeadlineAndEventDescription (String command, String delimiter) throws DukeException {
@@ -76,7 +76,7 @@ public class Duke {
         return description;
     }
 
-    public static String getTodoDescription(String command) throws DukeException {
+    public static String getTodoDescription (String command) throws DukeException {
         String[] slicedCommand = command.split(" ", 2);
         if (slicedCommand.length == 1) {
             throw new DukeException();
@@ -106,7 +106,7 @@ public class Duke {
         return inputLine;
     }
 
-    public static void getCommandType(String command) throws DukeException {
+    public static void getCommandType (String command) throws DukeException {
         String[] slicedInput = command.split(" ", 2);
 
         switch (slicedInput[0].toLowerCase().trim()) {
@@ -149,7 +149,7 @@ public class Duke {
     }
 
 
-    public static void printAddMessage(Task task) {
+    public static void printAddMessage (Task task) {
         int taskCount = Task.getNumberOfTask() + 1;
         System.out.println("-----------------------------------------");
         System.out.println("!bot:\nAdded: " + task.toString());
@@ -161,7 +161,7 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-    public static void printSetTaskDoneMessage(Task task) {
+    public static void printSetTaskDoneMessage (Task task) {
         System.out.println("-----------------------------------------");
         System.out.println("!bot:");
         System.out.println("Nice! I've mark this task as done:");
@@ -169,7 +169,7 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-    public static void printTaskList(Task[] tasks) {
+    public static void printTaskList (Task[] tasks) {
         int taskCount = Task.getNumberOfTask();
         System.out.println("-----------------------------------------");
         System.out.println("!bot:");
@@ -186,7 +186,7 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-    public static void setTaskAsDone(String command, Task[] tasks) {
+    public static void setTaskAsDone (String command, Task[] tasks) {
         try {
             int taskNumber = Integer.parseInt(command.substring(5)) - 1;
             tasks[taskNumber].setDone();
@@ -198,7 +198,7 @@ public class Duke {
         }
     }
 
-    public static void executeCommands(Task[] tasks) {
+    public static void executeCommands (Task[] tasks) {
         String command;
         command = getInput();
 
@@ -227,7 +227,7 @@ public class Duke {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         Task[] tasks = new Task[MAX_TASKS];
 
         printWelcomeMessage();
