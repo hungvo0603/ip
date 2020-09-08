@@ -148,7 +148,6 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-
     public static void printAddMessage (Task task) {
         int taskCount = Task.getNumberOfTask() + 1;
         System.out.println("-----------------------------------------");
@@ -222,14 +221,12 @@ public class Duke {
             default:
                 break;
             }
-
             command = getInput();
         }
     }
 
     public static void main (String[] args) {
         Task[] tasks = new Task[MAX_TASKS];
-
         printWelcomeMessage();
         executeCommands(tasks);
         printGoodbyeMessage();
