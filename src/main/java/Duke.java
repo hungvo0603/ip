@@ -6,50 +6,85 @@ public class Duke {
     private static final int MAX_TASKS = 100;
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void addDeadlineTask(String command, Task[] tasks, String delimiter) {
-        String[] words = command.split(" ", 2);
-        String[] deadline = command.split(delimiter);
-
+    public static void addDeadlineTask(Task[] tasks, String command, String delimiter) {
         try {
-            String description = words[1].split(delimiter, 2)[0].trim();
-            String time = deadline[1].trim();
+            String description = getDeadlineAndEventDescription(command, delimiter);
+            String time = getDeadlineAndEventTime(command, delimiter);
             int taskCount = Task.getNumberOfTask();
             Task t = new Deadline(description, time);
             tasks[taskCount] = t;
             printAddMessage(tasks[taskCount]);
             Task.incrementNumberOfTask();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Cannot init Deadline task");
+        } catch (DukeException e) {
+            ErrorMessage.printDeadlineSyntaxCommandMessage(command);
         }
     }
 
-    public static void addEventTask(String command, Task[] tasks, String delimiter) {
-        String[] words = command.split(" ", 2);
-        String[] event = command.split(delimiter);
+    public static void addEventTask(Task[] tasks, String command, String delimiter) {
         try {
-            String description = words[1].split(delimiter, 2)[0].trim();
-            String time = event[1].trim();
+            String description = getDeadlineAndEventDescription(command, delimiter);
+            String time = getDeadlineAndEventTime(command, delimiter);
             int taskCount = Task.getNumberOfTask();
             Task t = new Event(description, time);
             tasks[taskCount] = t;
             printAddMessage(tasks[taskCount]);
             Task.incrementNumberOfTask();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Cannot init Event task");
+        } catch (DukeException e) {
+            ErrorMessage.printEventSyntaxCommandMessage(command);
         }
     }
 
     public static void addTodoTask(String command, Task[] tasks) {
-        String[] slicedCommand = command.split(" ", 2);
         try {
-            Task t = new Todo(slicedCommand[1]);
+            String description = getTodoDescription(command);
+            Task t = new Todo(description);
             int taskCount = Task.getNumberOfTask();
             tasks[taskCount] = t;
             printAddMessage(tasks[taskCount]);
             Task.incrementNumberOfTask();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Cannot init Todo task");
+        } catch (DukeException e) {
+            ErrorMessage.printTodoSyntaxCommandMessage(command);
         }
+    }
+
+    public static String getDeadlineAndEventTime (String command, String delimiter) throws DukeException {
+        String[] content = command.split(delimiter, 2);
+        if (content.length <= 1) {
+            throw new DukeException();
+        } else if (content[1].trim().length() == 0) {
+            throw new DukeException();
+        }
+
+        return content[1].trim();
+    }
+
+    public static String getDeadlineAndEventDescription (String command, String delimiter) throws DukeException {
+        String[] words = command.split(" ", 2);
+        if (words.length <= 1) {
+            throw new DukeException();
+        } else if (words[1].trim().length() == 0) {
+            throw new DukeException();
+        } else if (!words[1].trim().contains(delimiter)) {
+            throw new DukeException();
+        }
+
+        String description = words[1].split(delimiter, 2)[0].trim();
+        if (description.length() == 0) {
+            throw new DukeException();
+        }
+
+        return description;
+    }
+
+    public static String getTodoDescription(String command) throws DukeException {
+        String[] slicedCommand = command.split(" ", 2);
+        if (slicedCommand.length == 1) {
+            throw new DukeException();
+        } else if (slicedCommand[1].trim().length() == 0) {
+            throw new DukeException();
+        }
+
+        return slicedCommand[1].trim();
     }
 
     public static String getInput() {
@@ -57,17 +92,21 @@ public class Duke {
         String inputLine = SCANNER.nextLine();
 
         while (inputLine.trim().isEmpty()) {
-            printNullCommandMessage();
+            ErrorMessage.printNullCommandErrorMessage();
             System.out.print("Hung: ");
             inputLine = SCANNER.nextLine();
         }
 
-        getCommandType(inputLine);
+        try {
+            getCommandType(inputLine);
+        } catch (DukeException e) {
+            ErrorMessage.printCommandTypeErrorMessage();
+        }
 
         return inputLine;
     }
 
-    public static void getCommandType(String command) {
+    public static void getCommandType(String command) throws DukeException {
         String[] slicedInput = command.split(" ", 2);
 
         switch (slicedInput[0].toLowerCase().trim()) {
@@ -90,14 +129,9 @@ public class Duke {
             commandType = Command.DONE;
             break;
         default:
-            System.out.println("XXXXXXXX");
+            commandType = Command.ERROR;
+            throw new DukeException();
         }
-    }
-
-    public static void printNullCommandMessage() {
-        System.out.println("-----------------------------------------");
-        System.out.println("!bot: Command cannot be empty! Please try another command!");
-        System.out.println("-----------------------------------------");
     }
 
     public static void printWelcomeMessage() {
@@ -114,13 +148,6 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-    public static void printErrorMessage() {
-        System.out.println("-----------------------------------------");
-        System.out.println("!bot:");
-        System.out.println("Your command is not valid!");
-        System.out.println("Please enter another command!");
-        System.out.println("-----------------------------------------");
-    }
 
     public static void printAddMessage(Task task) {
         int taskCount = Task.getNumberOfTask() + 1;
@@ -146,6 +173,13 @@ public class Duke {
         int taskCount = Task.getNumberOfTask();
         System.out.println("-----------------------------------------");
         System.out.println("!bot:");
+
+        if (taskCount == 0) {
+            System.out.println("There is no task in the list for now.");
+            System.out.println("-----------------------------------------");
+            return;
+        }
+
         for (int i = 1; i < taskCount + 1; i = i + 1) {
             System.out.printf("%d. %s\n", i, tasks[i - 1].toString());
         }
@@ -158,9 +192,9 @@ public class Duke {
             tasks[taskNumber].setDone();
             printSetTaskDoneMessage(tasks[taskNumber]);
         } catch (NumberFormatException e) {
-            System.out.println("Task number should be an integer");
+            ErrorMessage.printNumberFormatErrorMessage();
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Task number is not valid");
+            ErrorMessage.printOutOfBoundsErrorMessage();
         }
     }
 
@@ -169,28 +203,24 @@ public class Duke {
         command = getInput();
 
         while (commandType != Command.BYE) {
-            try {
-                switch (commandType) {
-                case LIST:
-                    printTaskList(tasks);
-                    break;
-                case DONE:
-                    setTaskAsDone(command, tasks);
-                    break;
-                case TODO:
-                    addTodoTask(command, tasks);
-                    break;
-                case DEADLINE:
-                    addDeadlineTask(command, tasks, "/by");
-                    break;
-                case EVENT:
-                    addEventTask(command, tasks, "/at");
-                    break;
-                default:
-                    System.out.println("xxxxx");
-                }
-            } catch (NullPointerException e) {
-                System.out.println("No command type found");
+            switch (commandType) {
+            case LIST:
+                printTaskList(tasks);
+                break;
+            case DONE:
+                setTaskAsDone(command, tasks);
+                break;
+            case TODO:
+                addTodoTask(command, tasks);
+                break;
+            case DEADLINE:
+                addDeadlineTask(tasks, command, "/by");
+                break;
+            case EVENT:
+                addEventTask(tasks, command, "/at");
+                break;
+            default:
+                break;
             }
 
             command = getInput();
