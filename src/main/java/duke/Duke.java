@@ -358,7 +358,6 @@ public class Duke {
                 deleteTask(command);
                 break;
             default:
-                System.out.println("ERROR");
                 break;
             }
             command = getInput();
