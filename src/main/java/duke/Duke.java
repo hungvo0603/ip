@@ -8,53 +8,94 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.Todo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileWriter;
+
+//import java.util.Arrays;
 import java.util.Scanner;
 
 public class Duke {
 
     private static Command commandType;
     private static final int MAX_TASKS = 100;
+    private static final Task[] tasks = new Task[MAX_TASKS];
     private static final Scanner SCANNER = new Scanner(System.in);
+    private static final String FILE_PATH = "data/duke.txt";
 
-    public static void addDeadlineTask (Task[] tasks, String command, String delimiter) {
+    public static void writeToFile(String textToWrite) throws IOException {
+        FileWriter fw = new FileWriter(FILE_PATH);
+        fw.write(textToWrite);
+        fw.close();
+    }
+
+    public static void readFromFile() {
+        File directory = new File("data");
+        File f = new File(FILE_PATH);
+
+        if (directory.mkdir()) {
+            System.out.println("A directory has just been created: data");
+        } else {
+            System.out.println("saving directory: " + FILE_PATH);
+        }
+
         try {
-            String description = getDeadlineAndEventDescription(command, delimiter);
-            String time = getDeadlineAndEventTime(command, delimiter);
-            int taskCount = Task.getNumberOfTask();
-            Task t = new Deadline(description, time);
-            tasks[taskCount] = t;
-            printAddMessage(tasks[taskCount]);
-            Task.incrementNumberOfTask();
-        } catch (DukeException e) {
-            ErrorMessage.printDeadlineSyntaxCommandMessage(command);
+            Scanner s = new Scanner(f);
+            loadTasksFromFile(s);
+        } catch (FileNotFoundException e) {
+            System.out.println("Initialize saving file...");
         }
     }
 
-    public static void addEventTask (Task[] tasks, String command, String delimiter) {
-        try {
-            String description = getDeadlineAndEventDescription(command, delimiter);
-            String time = getDeadlineAndEventTime(command, delimiter);
-            int taskCount = Task.getNumberOfTask();
-            Task t = new Event(description, time);
-            tasks[taskCount] = t;
-            printAddMessage(tasks[taskCount]);
-            Task.incrementNumberOfTask();
-        } catch (DukeException e) {
-            ErrorMessage.printEventSyntaxCommandMessage(command);
+    public static void loadTasksFromFile(Scanner s) {
+        while (s.hasNext()) {
+            String[] readings = s.nextLine().split("\\|");
+
+            for (int i = 0; i < readings.length; i++) {
+                readings[i] = readings[i].trim();
+            }
+
+            switch(readings[0]) {
+            case "T":
+                addTodoTask(readings[2]);
+                break;
+            case "D":
+                addDeadlineTask(readings[2], readings[3]);
+                break;
+            case "E":
+                addEventTask(readings[2], readings[3]);
+                break;
+            default:
+                System.out.println("ERROR");
+            }
+
+            if (readings[1].equals("true")) {
+                tasks[Task.getNumberOfTask() - 1].setDone();
+            }
         }
     }
 
-    public static void addTodoTask (String command, Task[] tasks) {
-        try {
-            String description = getTodoDescription(command);
-            Task t = new Todo(description);
-            int taskCount = Task.getNumberOfTask();
-            tasks[taskCount] = t;
-            printAddMessage(tasks[taskCount]);
-            Task.incrementNumberOfTask();
-        } catch (DukeException e) {
-            ErrorMessage.printTodoSyntaxCommandMessage(command);
-        }
+    public static void addDeadlineTask (String description, String time) {
+        int taskCount = Task.getNumberOfTask();
+        Task t = new Deadline(description, time);
+        tasks[taskCount] = t;
+        Task.incrementNumberOfTask();
+    }
+
+    public static void addEventTask (String description, String time) {
+        int taskCount = Task.getNumberOfTask();
+        Task t = new Event(description, time);
+        tasks[taskCount] = t;
+        Task.incrementNumberOfTask();
+
+    }
+
+    public static void addTodoTask (String description) {
+        Task t = new Todo(description);
+        int taskCount = Task.getNumberOfTask();
+        tasks[taskCount] = t;
+        Task.incrementNumberOfTask();
     }
 
     public static String getDeadlineAndEventTime (String command, String delimiter) throws DukeException {
@@ -159,7 +200,7 @@ public class Duke {
     }
 
     public static void printAddMessage (Task task) {
-        int taskCount = Task.getNumberOfTask() + 1;
+        int taskCount = Task.getNumberOfTask();
         System.out.println("-----------------------------------------");
         System.out.println("!bot:\nAdded: " + task.toString());
         if (taskCount <= 1) {
@@ -178,7 +219,7 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-    public static void printTaskList (Task[] tasks) {
+    public static void printTaskList () {
         int taskCount = Task.getNumberOfTask();
         System.out.println("-----------------------------------------");
         System.out.println("!bot:");
@@ -195,38 +236,59 @@ public class Duke {
         System.out.println("-----------------------------------------");
     }
 
-    public static void setTaskAsDone (String command, Task[] tasks) {
+    public static void setTaskAsDone (String command) {
         try {
             int taskNumber = Integer.parseInt(command.substring(5)) - 1;
             tasks[taskNumber].setDone();
             printSetTaskDoneMessage(tasks[taskNumber]);
         } catch (NumberFormatException e) {
             ErrorMessage.printNumberFormatErrorMessage();
-        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
             ErrorMessage.printOutOfBoundsErrorMessage();
         }
     }
 
-    public static void executeCommands (Task[] tasks) {
+    public static void executeCommands () {
         String command;
         command = getInput();
 
         while (commandType != Command.BYE) {
             switch (commandType) {
             case LIST:
-                printTaskList(tasks);
+                printTaskList();
                 break;
             case DONE:
-                setTaskAsDone(command, tasks);
+                setTaskAsDone(command);
                 break;
             case TODO:
-                addTodoTask(command, tasks);
+                try {
+                    String description = getTodoDescription(command);
+                    addTodoTask(description);
+                    printAddMessage(tasks[Task.getNumberOfTask() - 1]);
+                } catch (DukeException e) {
+                    System.out.println("ERROR");
+                }
+
                 break;
             case DEADLINE:
-                addDeadlineTask(tasks, command, "/by");
+                try {
+                    String description = getDeadlineAndEventDescription(command, "/by");
+                    String time = getDeadlineAndEventTime(command, "/by");
+                    addDeadlineTask(description, time);
+                    printAddMessage(tasks[Task.getNumberOfTask() - 1]);
+                } catch (DukeException e) {
+                    System.out.println("ERROR");
+                }
                 break;
             case EVENT:
-                addEventTask(tasks, command, "/at");
+                try {
+                    String description = getDeadlineAndEventDescription(command, "/at");
+                    String time = getDeadlineAndEventTime(command, "/at");
+                    addEventTask(description, time);
+                    printAddMessage(tasks[Task.getNumberOfTask() - 1]);
+                } catch (DukeException e) {
+                    System.out.println("ERROR");
+                }
                 break;
             default:
                 break;
@@ -235,11 +297,36 @@ public class Duke {
         }
     }
 
+    public static void saveTasks() {
+        String textToAdd = "";
+
+        for (int i = 0; i < Task.getNumberOfTask(); i++) {
+            Task t = tasks[i];
+            if (t instanceof Todo) {
+                textToAdd = textToAdd.concat("T | " + t.isDone() + " | " + t.getDescription() + System.lineSeparator());
+            } else if (t instanceof Deadline) {
+                textToAdd = textToAdd.concat("D | " + t.isDone() + " | " + t.getDescription()
+                        + " | " + ((Deadline) t).getDeadlineTime() + System.lineSeparator());
+            } else if (t instanceof Event) {
+                textToAdd = textToAdd.concat("E | " + t.isDone() + " | " + t.getDescription()
+                        + " | " + ((Event) t).getEventTime() + System.lineSeparator());
+            } else {
+                System.out.println("ERROR");
+            }
+        }
+        try {
+            writeToFile(textToAdd);
+        } catch (IOException e) {
+            System.out.println("CANNOT WRITE TO FILE");
+        }
+    }
+
     public static void main (String[] args) {
-        Task[] tasks = new Task[MAX_TASKS];
+        readFromFile();
         printWelcomeMessage();
-        executeCommands(tasks);
+        executeCommands();
         printGoodbyeMessage();
+        saveTasks();
     }
 
 }
