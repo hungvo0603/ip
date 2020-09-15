@@ -47,4 +47,10 @@ public class ErrorMessage {
         System.out.println("!bot: task number should be an integer");
         System.out.println("-----------------------------------------");
     }
+
+    public static void printUnknownError() {
+        System.out.println("-----------------------------------------");
+        System.out.println("!bot: Something went wrong. Please try again!!");
+        System.out.println("-----------------------------------------");
+    }
 }

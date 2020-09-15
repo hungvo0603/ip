@@ -20,6 +20,10 @@ public abstract class Task {
         isDone = true;
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
     public static int getNumberOfTask() {
         return numberOfTask;
     }
