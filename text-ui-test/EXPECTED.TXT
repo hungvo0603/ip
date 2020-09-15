@@ -43,11 +43,10 @@ Hung: -----------------------------------------
 Nice! I've mark this task as done:
  [E][✓] CS2113T project meeting (at: Wed 4pm on Zoom)
 -----------------------------------------
-Hung: -----------------------------------------
+Hung: Hung: -----------------------------------------
 !bot:
 1. [T][✓] iP
-2. [D][✘] tP (by: before tutorial at Wed 11pm)
-3. [E][✓] CS2113T project meeting (at: Wed 4pm on Zoom)
+2. [E][✓] CS2113T project meeting (at: Wed 4pm on Zoom)
 -----------------------------------------
 Hung: -----------------------------------------
 !bot: ~~Dead is like a wind, always by my side~~

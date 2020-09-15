@@ -32,13 +32,13 @@ public class ErrorMessage {
 
     public static void printNullCommandErrorMessage() {
         System.out.println("-----------------------------------------");
-        System.out.println("!bot: command.Command cannot be empty! Please try another command!");
+        System.out.println("!bot: command cannot be empty! Please try another command!");
         System.out.println("-----------------------------------------");
     }
 
     public static void printOutOfBoundsErrorMessage() {
         System.out.println("-----------------------------------------");
-        System.out.println("task.Task number is not valid");
+        System.out.println("Task number is not valid");
         System.out.println("-----------------------------------------");
     }
 
