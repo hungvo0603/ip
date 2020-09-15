@@ -6,5 +6,6 @@ event CS2113T project meeting /at Wed 4pm on Zoom
 list
 done 1
 done 3
+delete 2
 list
 bye
