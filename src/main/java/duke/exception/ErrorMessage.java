@@ -26,7 +26,7 @@ public class ErrorMessage {
     public static void printCommandTypeErrorMessage() {
         System.out.println("-----------------------------------------");
         System.out.println("!bot: invalid command type");
-        System.out.println("commands: todo, event, deadline, done, list, bye");
+        System.out.println("commands: todo, event, deadline, done, list, delete, bye");
         System.out.println("-----------------------------------------");
     }
 
@@ -48,9 +48,4 @@ public class ErrorMessage {
         System.out.println("-----------------------------------------");
     }
 
-    public static void printUnknownError() {
-        System.out.println("-----------------------------------------");
-        System.out.println("!bot: Something went wrong. Please try again!!");
-        System.out.println("-----------------------------------------");
-    }
 }

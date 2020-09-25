@@ -23,35 +23,35 @@ public class Duke {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final String FILE_PATH = "data/duke.txt";
 
-    public static void addEventTaskFromInput(String command) {
+    public static void addEventTaskFromInput (String command) {
         try {
             String description = getDeadlineAndEventDescription(command, "/at");
             String time = getDeadlineAndEventTime(command, "/at");
             readEventTaskToArray(description, time);
             printAddMessage(tasks.get(tasks.size() - 1));
         } catch (DukeException e) {
-            ErrorMessage.printUnknownError();
+            ErrorMessage.printEventSyntaxCommandMessage(command);
         }
     }
 
-    public static void addDeadlineTaskFromInput(String command) {
+    public static void addDeadlineTaskFromInput (String command) {
         try {
             String description = getDeadlineAndEventDescription(command, "/by");
             String time = getDeadlineAndEventTime(command, "/by");
             readDeadlineTaskToArray(description, time);
             printAddMessage(tasks.get(tasks.size() - 1));
         } catch (DukeException e) {
-            System.out.println("ERROR");
+            ErrorMessage.printDeadlineSyntaxCommandMessage(command);
         }
     }
 
-    public static void addTodoTaskFromInput(String command) {
+    public static void addTodoTaskFromInput (String command) {
         try {
             String description = getTodoDescription(command);
             readTodoTaskToArray(description);
             printAddMessage(tasks.get(tasks.size() - 1));
         } catch (DukeException e) {
-            System.out.println("ERROR");
+            ErrorMessage.printTodoSyntaxCommandMessage(command);
         }
     }
 
@@ -92,7 +92,7 @@ public class Duke {
         }
     }
 
-    public static void readDataFromFile(Scanner s) throws IndexOutOfBoundsException {
+    public static void readDataFromFile (Scanner s) throws IndexOutOfBoundsException {
         while (s.hasNext()) {
             String[] readings = s.nextLine().split("\\|");
 
@@ -144,7 +144,7 @@ public class Duke {
         }
     }
 
-    public static void writeToFile(String textToWrite) throws IOException {
+    public static void writeToFile (String textToWrite) throws IOException {
         FileWriter fw = new FileWriter(FILE_PATH);
         fw.write(textToWrite);
         fw.close();
