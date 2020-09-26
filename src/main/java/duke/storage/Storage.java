@@ -16,6 +16,8 @@ import java.util.Scanner;
 
 public class Storage {
 
+    public static final String FILE_PATH = "data/duke.txt";
+
     public static void readDataFromFile (Scanner s) throws IndexOutOfBoundsException {
         while (s.hasNext()) {
             String[] readings = s.nextLine().split("\\|");
@@ -46,12 +48,12 @@ public class Storage {
 
     public static void loadTasks() {
         File directory = new File("data");
-        File f = new File(Duke.FILE_PATH);
+        File f = new File(FILE_PATH);
 
         if (directory.mkdir()) {
             System.out.println("A directory has just been created: data");
         } else {
-            System.out.println("saving directory: " + Duke.FILE_PATH);
+            System.out.println("saving directory: " + FILE_PATH);
         }
 
         try {
@@ -91,7 +93,7 @@ public class Storage {
     }
 
     public static void writeToFile (String textToWrite) throws IOException {
-        FileWriter fw = new FileWriter(Duke.FILE_PATH);
+        FileWriter fw = new FileWriter(FILE_PATH);
         fw.write(textToWrite);
         fw.close();
     }

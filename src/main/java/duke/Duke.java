@@ -5,9 +5,7 @@ import duke.storage.Storage;
 import duke.ui.TextUI;
 
 public class Duke {
-
-    public static final String FILE_PATH = "data/duke.txt";
-
+    
     public static void main (String[] args) {
         Storage.loadTasks();
         TextUI.printWelcomeMessage();
