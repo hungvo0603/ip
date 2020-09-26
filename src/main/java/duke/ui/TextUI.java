@@ -1,57 +1,53 @@
 package duke.ui;
 
+import duke.constants.Constants;
 import duke.task.Task;
 import duke.tasklist.TaskList;
 
 public class TextUI {
 
     public static void printWelcomeMessage() {
-        System.out.println("-----------------------------------------");
-        System.out.println("!bot:");
-        System.out.println("Hello! I'm !bot\nWhat are your orders?");
-        System.out.println("-----------------------------------------");
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.GREETING_MESSAGE);
+        System.out.println(Constants.LINE_DIVIDER);
     }
 
     public static void printGoodbyeMessage() {
-        System.out.println("-----------------------------------------");
-        System.out.print("!bot: ");
-        System.out.println("~~Dead is like a wind, always by my side~~");
-        System.out.println("-----------------------------------------");
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.GOODBYE_MESSAGE);
+        System.out.println(Constants.LINE_DIVIDER);
     }
 
-    public static void printSetTaskDoneMessage (Task task) {
-        System.out.println("-----------------------------------------");
-        System.out.println("!bot:");
-        System.out.println("Nice! I've mark this task as done:");
+    public static void printSetTaskDoneMessage(Task task) {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.MARK_AS_DONE_MESSAGE);
         System.out.printf(" %s\n", task.toString());
-        System.out.println("-----------------------------------------");
+        System.out.println(Constants.LINE_DIVIDER);
     }
 
-    public static void printAddMessage (Task task) {
+    public static void printAddMessage(Task task) {
         int taskCount = TaskList.getNumberOfTasks();
-
-        System.out.println("-----------------------------------------");
+        System.out.println(Constants.LINE_DIVIDER);
         System.out.println("!bot:\nAdded: " + task.toString());
-        if (taskCount <= 1) {
-            System.out.println("You now have " + taskCount + " task in the list.");
-        } else {
-            System.out.println("You now have " + taskCount + " tasks in the list.");
-        }
-        System.out.println("-----------------------------------------");
+        System.out.println(getTaskCountMessage(taskCount));
+        System.out.println(Constants.LINE_DIVIDER);
     }
 
     public static void printDeleteMessage(Task t) {
         int taskCount = TaskList.getNumberOfTasks();
-        System.out.println("-----------------------------------------");
-        System.out.println("!bot:");
-        System.out.println("Noted. I've removed this tasks");
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.REMOVE_TASK_MESSAGE);
         System.out.println("  " + t.toString());
+        System.out.println(getTaskCountMessage(taskCount));
+        System.out.println(Constants.LINE_DIVIDER);
+    }
+
+    private static String getTaskCountMessage(int taskCount) {
         if (taskCount <= 1) {
-            System.out.println("Now you have " + taskCount + " task in the list");
+            return "You now have " + taskCount + " task in the list";
         } else {
-            System.out.println("Now you have " + taskCount + " tasks in the list");
+            return "You now have " + taskCount + " tasks in the list";
         }
-        System.out.println("-----------------------------------------");
     }
 
 }

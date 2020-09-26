@@ -18,7 +18,7 @@ public class TaskList {
         return tasks.size();
     }
 
-    public static void addEventTaskFromInput (String command) {
+    public static void addEventTaskFromInput(String command) {
         try {
             String description = Parser.getDeadlineAndEventDescription(command, "/at");
             String time = Parser.getDeadlineAndEventTime(command, "/at");
@@ -29,7 +29,7 @@ public class TaskList {
         }
     }
 
-    public static void addDeadlineTaskFromInput (String command) {
+    public static void addDeadlineTaskFromInput(String command) {
         try {
             String description = Parser.getDeadlineAndEventDescription(command, "/by");
             String time = Parser.getDeadlineAndEventTime(command, "/by");
@@ -40,7 +40,7 @@ public class TaskList {
         }
     }
 
-    public static void addTodoTaskFromInput (String command) {
+    public static void addTodoTaskFromInput(String command) {
         try {
             String description = Parser.getTodoDescription(command);
             writeTodoTaskToList(description);
@@ -65,7 +65,7 @@ public class TaskList {
         tasks.add(t);
     }
 
-    public static void deleteTask (String command) {
+    public static void deleteTask(String command) {
         try {
             int taskNumber = Integer.parseInt(command.substring(7)) - 1;
             Task t = tasks.get(taskNumber);
@@ -78,7 +78,7 @@ public class TaskList {
         }
     }
 
-    public static void setTaskAsDone (String command) {
+    public static void setTaskAsDone(String command) {
         try {
             int taskNumber = Integer.parseInt(command.substring(5)) - 1;
             tasks.get(taskNumber).setDone();
