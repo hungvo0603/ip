@@ -9,6 +9,7 @@ import java.time.format.DateTimeParseException;
 
 public class Parser {
 
+
     public static String getDeadlineAndEventDateAndTime(String command, String delimiter) throws DukeException {
         String[] descriptions = command.split(delimiter, 2);
         if (descriptions.length <= 1) {
@@ -67,7 +68,7 @@ public class Parser {
         return description;
     }
 
-    public static String getTodoDescription (String command) throws DukeException {
+    public static String getTodoAndFindDescription(String command) throws DukeException {
         String[] slicedCommand = command.split(" ", 2);
         if (slicedCommand.length == 1) {
             throw new DukeException();
