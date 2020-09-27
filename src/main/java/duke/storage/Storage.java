@@ -1,7 +1,8 @@
 package duke.storage;
 
-import duke.Duke;
+import duke.exception.DukeException;
 import duke.exception.ErrorMessage;
+import duke.parser.Parser;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
@@ -12,13 +13,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Storage {
 
     public static final String FILE_PATH = "data/duke.txt";
 
-    public static void readDataFromFile (Scanner s) throws IndexOutOfBoundsException {
+    public static void readDataFromFile (Scanner s) throws IndexOutOfBoundsException, DukeException {
         while (s.hasNext()) {
             String[] readings = s.nextLine().split("\\|");
 
@@ -31,11 +35,27 @@ public class Storage {
                 TaskList.writeTodoTaskToList(readings[2]);
                 break;
             case "D":
-                TaskList.writeDeadlineTaskToList(readings[2], readings[3]);
-                break;
+                try {
+                    LocalDate deadlineDate = Parser.getDeadlineAndEventDate(readings[3]);
+                    LocalTime deadlineTime = Parser.getDeadlineAndEventTime(readings[3]);
+                    TaskList.writeDeadlineTaskToList(readings[2], deadlineDate, deadlineTime);
+                    break;
+                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
+                    System.out.println("-----------------------------------------");
+                    System.out.println("!bot: invalid command");
+                    System.out.println("-----------------------------------------");
+                }
             case "E":
-                TaskList.writeEventTaskToList(readings[2], readings[3]);
-                break;
+                try {
+                    LocalDate eventDate = Parser.getDeadlineAndEventDate(readings[3]);
+                    LocalTime eventTime = Parser.getDeadlineAndEventTime(readings[3]);
+                    TaskList.writeEventTaskToList(readings[2], eventDate, eventTime);
+                    break;
+                } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
+                    System.out.println("-----------------------------------------");
+                    System.out.println("!bot: invalid command");
+                    System.out.println("-----------------------------------------");
+                }
             default:
                 throw new IndexOutOfBoundsException();
             }
@@ -62,6 +82,8 @@ public class Storage {
                 readDataFromFile(s);
             } catch (IndexOutOfBoundsException e) {
                 ErrorMessage.printOutOfBoundsErrorMessage();
+            } catch (DukeException e) {
+                System.out.println("No data ready for now");
             }
         } catch (FileNotFoundException e) {
             System.out.println("Initialize saving file...");
@@ -77,10 +99,10 @@ public class Storage {
                         + System.lineSeparator());
             } else if (t instanceof Deadline) {
                 textToAdd = textToAdd.concat("D | " + t.isDone() + " | " + t.getDescription()
-                        + " | " + ((Deadline) t).getDeadlineTime() + System.lineSeparator());
+                        + " | " + ((Deadline) t).getTime() +  System.lineSeparator());
             } else if (t instanceof Event) {
                 textToAdd = textToAdd.concat("E | " + t.isDone() + " | " + t.getDescription()
-                        + " | " + ((Event) t).getEventTime() + System.lineSeparator());
+                        + " | " + ((Event) t).getTime() + System.lineSeparator());
             } else {
                 System.out.println("ERROR");
             }

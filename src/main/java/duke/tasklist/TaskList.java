@@ -9,6 +9,9 @@ import duke.task.Todo;
 import duke.ui.TextUI;
 import duke.parser.Parser;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -22,22 +25,34 @@ public class TaskList {
     public static void addEventTaskFromInput(String command) {
         try {
             String description = Parser.getDeadlineAndEventDescription(command, "/at");
-            String time = Parser.getDeadlineAndEventTime(command, "/at");
-            writeEventTaskToList(description, time);
+            String atTime = Parser.getDeadlineAndEventDateAndTime(command, "/at");
+            LocalDate date = Parser.getDeadlineAndEventDate(atTime);
+            LocalTime time = Parser.getDeadlineAndEventTime(atTime);
+            writeEventTaskToList(description, date, time);
             TextUI.printAddMessage(tasks.get(tasks.size() - 1));
         } catch (DukeException e) {
             ErrorMessage.printEventSyntaxCommandMessage(command);
+        } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
+            System.out.println("-----------------------------------------");
+            System.out.println("!bot: date/time format is invalid");
+            System.out.println("-----------------------------------------");
         }
     }
 
     public static void addDeadlineTaskFromInput(String command) {
         try {
             String description = Parser.getDeadlineAndEventDescription(command, "/by");
-            String time = Parser.getDeadlineAndEventTime(command, "/by");
-            writeDeadlineTaskToList(description, time);
+            String byTime = Parser.getDeadlineAndEventDateAndTime(command, "/by");
+            LocalDate date = Parser.getDeadlineAndEventDate(byTime);
+            LocalTime time = Parser.getDeadlineAndEventTime(byTime);
+            writeDeadlineTaskToList(description, date, time);
             TextUI.printAddMessage(tasks.get(tasks.size() - 1));
         } catch (DukeException e) {
             ErrorMessage.printDeadlineSyntaxCommandMessage(command);
+        } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
+            System.out.println("-----------------------------------------");
+            System.out.println("!bot: date/time format is invalid");
+            System.out.println("-----------------------------------------");
         }
     }
 
@@ -51,13 +66,13 @@ public class TaskList {
         }
     }
 
-    public static void writeDeadlineTaskToList(String description, String time) {
-        Task t = new Deadline(description, time);
+    public static void writeDeadlineTaskToList(String description, LocalDate date, LocalTime time) {
+        Task t = new Deadline(description, date, time);
         tasks.add(t);
     }
 
-    public static void writeEventTaskToList(String description, String time) {
-        Task t = new Event(description, time);
+    public static void writeEventTaskToList(String description, LocalDate date, LocalTime time) {
+        Task t = new Event(description, date, time);
         tasks.add(t);
     }
 
