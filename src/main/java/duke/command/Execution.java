@@ -25,6 +25,9 @@ public class Execution {
             case EVENT:
                 TaskList.addEventTaskFromInput(command);
                 break;
+            case FIND:
+                TaskList.printFoundTask(command);
+                break;
             case DELETE:
                 TaskList.deleteTask(command);
                 break;
