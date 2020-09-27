@@ -23,7 +23,25 @@ public class ErrorMessage {
         System.out.println(Constants.BOT_INVALID_COMMAND + command);
         System.out.println(Constants.SAMPLE_TODO_COMMAND);
         System.out.println(Constants.LINE_DIVIDER);
+    }
 
+    public static void printFindSyntaxCommandMessage(String command) {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.BOT_INVALID_COMMAND + command);
+        System.out.println(Constants.SAMPLE_FIND_COMMAND);
+        System.out.println(Constants.LINE_DIVIDER);
+    }
+
+    public static void printInvalidInputMessage() {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.BOT_INVALID_INPUT);
+        System.out.println(Constants.LINE_DIVIDER);
+    }
+
+    public static void printDateTimeFormatErrorMessage() {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.DATETIME_FORMAT_ERROR_MESSAGE);
+        System.out.println(Constants.LINE_DIVIDER);
     }
 
     public static void printCommandTypeErrorMessage() {
@@ -31,7 +49,6 @@ public class ErrorMessage {
         System.out.println(Constants.BOT_INVALID_COMMAND);
         System.out.println(Constants.COMMAND_LIST);
         System.out.println(Constants.LINE_DIVIDER);
-
     }
 
     public static void printNullCommandErrorMessage() {

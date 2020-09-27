@@ -5,6 +5,9 @@ import duke.exception.ErrorMessage;
 
 import java.util.Scanner;
 
+/**
+ * An enumeration for commands and methods dealing with commands
+ */
 public enum Command {
     LIST,
     TODO,

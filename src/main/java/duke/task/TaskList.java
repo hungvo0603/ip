@@ -40,9 +40,7 @@ public class TaskList {
         } catch (DukeException e) {
             ErrorMessage.printEventSyntaxCommandMessage(command);
         } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-            System.out.println("-----------------------------------------");
-            System.out.println("!bot: date/time format is invalid");
-            System.out.println("-----------------------------------------");
+            ErrorMessage.printDateTimeFormatErrorMessage();
         }
     }
 
@@ -62,9 +60,7 @@ public class TaskList {
         } catch (DukeException e) {
             ErrorMessage.printDeadlineSyntaxCommandMessage(command);
         } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-            System.out.println("-----------------------------------------");
-            System.out.println("!bot: date/time format is invalid");
-            System.out.println("-----------------------------------------");
+            ErrorMessage.printDateTimeFormatErrorMessage();
         }
     }
 
@@ -152,12 +148,12 @@ public class TaskList {
     public static void printTaskList() {
         int taskCount = tasks.size();
 
-        System.out.println("-----------------------------------------");
+        System.out.println(Constants.LINE_DIVIDER);
         System.out.println("!bot:");
 
         if (taskCount == 0) {
-            System.out.println("There is no task in the list for now.");
-            System.out.println("-----------------------------------------");
+            System.out.println(Constants.NO_TASK_MESSAGE);
+            System.out.println(Constants.LINE_DIVIDER);
             return;
         }
 
@@ -165,7 +161,7 @@ public class TaskList {
             System.out.printf("%d. %s\n", i, tasks.get(i-1).toString());
         }
 
-        System.out.println("-----------------------------------------");
+        System.out.println(Constants.LINE_DIVIDER);
     }
 
     public static void printFoundTask(String command) {
@@ -180,17 +176,17 @@ public class TaskList {
             }
             System.out.println(Constants.LINE_DIVIDER);
         } catch (DukeException e) {
-            System.out.println("Syntax error");
+            ErrorMessage.printFindSyntaxCommandMessage(command);
         }
     }
 
     private static void printNumberOfMatchingTasks(int size) {
         if (size == 0) {
             System.out.println(Constants.LINE_DIVIDER);
-            System.out.println("!bot: No matching task found in your list");
+            System.out.println(Constants.NO_TASK_FOUND);
         } else if (size == 1) {
             System.out.println(Constants.LINE_DIVIDER);
-            System.out.println("!bot: There is one matching task in your list");
+            System.out.println(Constants.ONE_TASK_FOUND);
         } else {
             System.out.println(Constants.LINE_DIVIDER);
             System.out.printf("!bot: There are %d matching tasks in your list\n", size);

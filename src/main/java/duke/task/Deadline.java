@@ -1,5 +1,7 @@
 package duke.task;
 
+import duke.constants.Constants;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -35,7 +37,7 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " +
-                date.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + " " +
-                time.format(DateTimeFormatter.ofPattern("hh:mm a")) + ")";
+                date.format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + " " +
+                time.format(DateTimeFormatter.ofPattern(Constants.TIME_FORMAT)) + ")";
     }
 }

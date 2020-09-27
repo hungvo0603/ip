@@ -1,5 +1,6 @@
 package duke.storage;
 
+import duke.constants.Constants;
 import duke.exception.DukeException;
 import duke.exception.ErrorMessage;
 import duke.parser.Parser;
@@ -31,9 +32,9 @@ public class Storage {
         File f = new File(FILE_PATH);
 
         if (directory.mkdir()) {
-            System.out.println("A directory has just been created: data");
+            System.out.println(Constants.CREATE_DIRECTORY_MESSAGE);
         } else {
-            System.out.println("saving directory: " + FILE_PATH);
+            System.out.println("!bot: saving directory: " + FILE_PATH);
         }
 
         try {
@@ -43,10 +44,10 @@ public class Storage {
             } catch (IndexOutOfBoundsException e) {
                 ErrorMessage.printOutOfBoundsErrorMessage();
             } catch (DukeException e) {
-                System.out.println("cannot parse date or time");
+                System.out.println(Constants.PARSE_DATETIME_ERROR_MESSAGE);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Initialize saving file...");
+            System.out.println(Constants.CREATE_FILE_MESSAGE);
         }
     }
 
@@ -75,9 +76,7 @@ public class Storage {
                     LocalTime deadlineTime = Parser.getDeadlineAndEventTime(readings[3]);
                     TaskList.writeDeadlineTaskToList(readings[2], deadlineDate, deadlineTime);
                 } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-                    System.out.println("-----------------------------------------");
-                    System.out.println("!bot: invalid command");
-                    System.out.println("-----------------------------------------");
+                    ErrorMessage.printInvalidInputMessage();
                 }
                 break;
             case "E":
@@ -86,9 +85,7 @@ public class Storage {
                     LocalTime eventTime = Parser.getDeadlineAndEventTime(readings[3]);
                     TaskList.writeEventTaskToList(readings[2], eventDate, eventTime);
                 } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-                    System.out.println("-----------------------------------------");
-                    System.out.println("!bot: invalid command");
-                    System.out.println("-----------------------------------------");
+                    ErrorMessage.printInvalidInputMessage();
                 }
                 break;
             default:
@@ -118,13 +115,13 @@ public class Storage {
                 textToAdd = textToAdd.concat("E | " + t.isDone() + " | " + t.getDescription()
                         + " | " + ((Event) t).getTime() + System.lineSeparator());
             } else {
-                System.out.println("ERROR");
+                System.out.println(Constants.ERROR);
             }
         }
         try {
             writeToFile(textToAdd);
         } catch (IOException e) {
-            System.out.println("CANNOT WRITE TO FILE");
+            System.out.println(Constants.CANNOT_WRITE_TO_FILE);
         }
     }
 

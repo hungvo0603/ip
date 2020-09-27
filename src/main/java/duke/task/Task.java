@@ -1,5 +1,7 @@
 package duke.task;
 
+import duke.constants.Constants;
+
 public abstract class Task {
 
     protected String description;
@@ -29,7 +31,7 @@ public abstract class Task {
     }
 
     public String getStatusIcon() {
-        return (this.isDone ? "[\u2713]" : "[\u2718]");
+        return (this.isDone ? Constants.TICK_ICON : Constants.CROSS_ICON);
     }
 
     /**

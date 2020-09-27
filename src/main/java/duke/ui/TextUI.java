@@ -49,11 +49,9 @@ public class TextUI {
      * @return String referring to total number of tasks
      */
     private static String getTaskCountMessage(int taskCount) {
-        if (taskCount <= 1) {
-            return "You now have " + taskCount + " task in the list";
-        } else {
-            return "You now have " + taskCount + " tasks in the list";
-        }
+        return (taskCount <= 1) ?
+                "You now have " + taskCount + " task in the list" :
+                "You now have " + taskCount + " tasks in the list";
     }
 
 }

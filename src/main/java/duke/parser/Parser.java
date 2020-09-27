@@ -10,12 +10,12 @@ import java.time.format.DateTimeParseException;
 public class Parser {
 
     /**
-     * Slice the command to get time of Deadline and Event tasks
+     * Slice the command to get date and time of Deadline and Event tasks
      *
      * @param command Command of deadline and event to be sliced
      * @param delimiter /at for Event task, /by for Deadline task
-     * @return time of Deadline or Event task
-     * @throws DukeException When time is missing or when it is poorly constructed
+     * @return date and time of Deadline or Event task
+     * @throws DukeException When the command is poorly constructed
      */
     public static String getDeadlineAndEventDateAndTime(String command, String delimiter) throws DukeException {
         String[] descriptions = command.split(delimiter, 2);
@@ -28,6 +28,14 @@ public class Parser {
         return descriptions[1].trim();
     }
 
+    /**
+     * Get date for Deadline and Event tasks
+     *
+     * @param dateAndTime String contains date and time
+     * @return LocalDate of the date
+     * @throws DukeException When command is poorly constructed
+     * @throws DateTimeParseException when string of date cannot be parsed to LocalDate type
+     */
     public static LocalDate getDeadlineAndEventDate(String dateAndTime) throws DukeException, DateTimeParseException {
         String[] str = dateAndTime.split(" ");
         if (str.length != 2) {
@@ -35,7 +43,14 @@ public class Parser {
         }
         return LocalDate.parse(str[0]);
     }
-    
+
+    /**
+     * Get time for Deadline and Event tasks
+     * @param dateAndTime String contains date and time
+     * @return LocalTime of time in hour:minute
+     * @throws DukeException When the command is poorly constructed
+     * @throws StringIndexOutOfBoundsException When date or time is missing
+     */
     public static LocalTime getDeadlineAndEventTime(String dateAndTime) throws DukeException, StringIndexOutOfBoundsException {
         String[] str = dateAndTime.split(" ");
         if (str.length != 2) {
@@ -100,4 +115,5 @@ public class Parser {
 
         return slicedCommand[1].trim();
     }
+
 }
