@@ -90,7 +90,7 @@ public class Parser {
      * @return String illustrate to-do description
      * @throws DukeException When command is poorly constructed
      */
-    public static String getTodoDescription (String command) throws DukeException {
+    public static String getTodoAndFindDescription(String command) throws DukeException {
         String[] slicedCommand = command.split(" ", 2);
         if (slicedCommand.length == 1) {
             throw new DukeException();

@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.constants.Constants;
 import duke.exception.DukeException;
 import duke.exception.ErrorMessage;
 import duke.ui.TextUI;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class TaskList {
     public static final ArrayList<Task> tasks = new ArrayList<>();
@@ -73,7 +75,7 @@ public class TaskList {
      */
     public static void addTodoTaskFromInput(String command) {
         try {
-            String description = Parser.getTodoDescription(command);
+            String description = Parser.getTodoAndFindDescription(command);
             writeTodoTaskToList(description);
             TextUI.printAddMessage(tasks.get(tasks.size() - 1));
         } catch (DukeException e) {
@@ -164,5 +166,34 @@ public class TaskList {
         }
 
         System.out.println("-----------------------------------------");
+    }
+
+    public static void printFoundTask(String command) {
+        try {
+            String word = Parser.getTodoAndFindDescription(command);
+            ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasks.stream()
+                    .filter((s) -> s.getDescription().contains(word))
+                    .collect(Collectors.toList());
+            printNumberOfMatchingTasks(filteredTaskList.size());
+            for (int i = 1; i <= filteredTaskList.size(); i = i + 1) {
+                System.out.printf(" %d. %s\n", i, filteredTaskList.get(i-1).toString());
+            }
+            System.out.println(Constants.LINE_DIVIDER);
+        } catch (DukeException e) {
+            System.out.println("Syntax error");
+        }
+    }
+
+    private static void printNumberOfMatchingTasks(int size) {
+        if (size == 0) {
+            System.out.println(Constants.LINE_DIVIDER);
+            System.out.println("!bot: No matching task found in your list");
+        } else if (size == 1) {
+            System.out.println(Constants.LINE_DIVIDER);
+            System.out.println("!bot: There is one matching task in your list");
+        } else {
+            System.out.println(Constants.LINE_DIVIDER);
+            System.out.printf("!bot: There are %d matching tasks in your list\n", size);
+        }
     }
 }
