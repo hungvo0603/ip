@@ -1,12 +1,11 @@
 package duke.storage;
 
-import duke.Duke;
 import duke.exception.ErrorMessage;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
 import duke.task.Todo;
-import duke.tasklist.TaskList;
+import duke.task.TaskList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +17,39 @@ public class Storage {
 
     public static final String FILE_PATH = "data/duke.txt";
 
+    /**
+     * Create the path when the path is missing
+     * Load the data from file if file is already created
+     */
+    public static void loadTasks() {
+        File directory = new File("data");
+        File f = new File(FILE_PATH);
+
+        if (directory.mkdir()) {
+            System.out.println("A directory has just been created: data");
+        } else {
+            System.out.println("saving directory: " + FILE_PATH);
+        }
+
+        try {
+            Scanner s = new Scanner(f);
+            try {
+                readDataFromFile(s);
+            } catch (IndexOutOfBoundsException e) {
+                ErrorMessage.printOutOfBoundsErrorMessage();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Initialize saving file...");
+        }
+    }
+
+    /**
+     * Take in the data from a storage file line by line
+     * Proceed data and put them into the list
+     *
+     * @param s Global Scanner
+     * @throws IndexOutOfBoundsException On error data in file
+     */
     public static void readDataFromFile (Scanner s) throws IndexOutOfBoundsException {
         while (s.hasNext()) {
             String[] readings = s.nextLine().split("\\|");
@@ -46,28 +78,9 @@ public class Storage {
         }
     }
 
-    public static void loadTasks() {
-        File directory = new File("data");
-        File f = new File(FILE_PATH);
-
-        if (directory.mkdir()) {
-            System.out.println("A directory has just been created: data");
-        } else {
-            System.out.println("saving directory: " + FILE_PATH);
-        }
-
-        try {
-            Scanner s = new Scanner(f);
-            try {
-                readDataFromFile(s);
-            } catch (IndexOutOfBoundsException e) {
-                ErrorMessage.printOutOfBoundsErrorMessage();
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Initialize saving file...");
-        }
-    }
-
+    /**
+     * Construct a string to be written in storage file when the user stops the program
+     */
     public static void saveTasks() {
         String textToAdd = "";
 
@@ -92,7 +105,13 @@ public class Storage {
         }
     }
 
-    public static void writeToFile (String textToWrite) throws IOException {
+    /**
+     * Overwrite data in storage file by the string prepared by {@link package.storage#saveTasks()}
+     *
+     * @param textToWrite String to overwrite the storage file
+     * @throws IOException When file cannot be modified
+     */
+    private static void writeToFile (String textToWrite) throws IOException {
         FileWriter fw = new FileWriter(FILE_PATH);
         fw.write(textToWrite);
         fw.close();

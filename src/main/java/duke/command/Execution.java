@@ -1,9 +1,12 @@
 package duke.command;
 
-import duke.tasklist.TaskList;
+import duke.task.TaskList;
 
 public class Execution {
 
+    /**
+     * Continuously get commands from the user and execute them
+     */
     public static void executeCommands () {
         String command;
         command = Command.getCommand();
