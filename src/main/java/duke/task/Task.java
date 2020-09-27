@@ -5,8 +5,12 @@ public abstract class Task {
     protected String description;
     protected boolean isDone;
 
-    protected static int numberOfTask = 0;
-
+    /**
+     * Construct a new Task object
+     * By default, done status is set to false
+     *
+     * @param description Task description
+     */
     public Task (String description) {
         this.description = description;
         this.isDone = false;
@@ -24,18 +28,15 @@ public abstract class Task {
         return isDone;
     }
 
-    public static int getNumberOfTask() {
-        return numberOfTask;
-    }
-
-    public static void incrementNumberOfTask() {
-        numberOfTask++;
-    }
-
     public String getStatusIcon() {
         return (this.isDone ? "[\u2713]" : "[\u2718]");
     }
 
+    /**
+     * Override toString method of Object class
+     *
+     * @return status icon and task description
+     */
     @Override
     public String toString() {
         return getStatusIcon() + " " + getDescription();
