@@ -9,7 +9,14 @@ import java.time.format.DateTimeParseException;
 
 public class Parser {
 
-
+    /**
+     * Slice the command to get time of Deadline and Event tasks
+     *
+     * @param command Command of deadline and event to be sliced
+     * @param delimiter /at for Event task, /by for Deadline task
+     * @return time of Deadline or Event task
+     * @throws DukeException When time is missing or when it is poorly constructed
+     */
     public static String getDeadlineAndEventDateAndTime(String command, String delimiter) throws DukeException {
         String[] descriptions = command.split(delimiter, 2);
         if (descriptions.length <= 1) {
@@ -50,6 +57,14 @@ public class Parser {
         return LocalTime.parse(time);
     }
 
+    /**
+     * Slice the command to get description of Deadline and Event tasks
+     *
+     * @param command Command of deadline and event to be sliced
+     * @param delimiter /at for Event task, /by for Deadline task
+     * @return description of Deadline or Event task
+     * @throws DukeException When description is missing or command is poorly constructed
+     */
     public static String getDeadlineAndEventDescription (String command, String delimiter) throws DukeException {
         String[] words = command.split(" ", 2);
         if (words.length <= 1) {
@@ -68,6 +83,13 @@ public class Parser {
         return description;
     }
 
+    /**
+     * Slice the command to get a Todo task description
+     *
+     * @param command command to be sliced
+     * @return String illustrate to-do description
+     * @throws DukeException When command is poorly constructed
+     */
     public static String getTodoAndFindDescription(String command) throws DukeException {
         String[] slicedCommand = command.split(" ", 2);
         if (slicedCommand.length == 1) {

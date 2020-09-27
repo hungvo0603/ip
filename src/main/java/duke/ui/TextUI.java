@@ -2,7 +2,7 @@ package duke.ui;
 
 import duke.constants.Constants;
 import duke.task.Task;
-import duke.tasklist.TaskList;
+import duke.task.TaskList;
 
 public class TextUI {
 
@@ -42,6 +42,12 @@ public class TextUI {
         System.out.println(Constants.LINE_DIVIDER);
     }
 
+    /**
+     * Get string stating current number of task
+     *
+     * @param taskCount number of task count
+     * @return String referring to total number of tasks
+     */
     private static String getTaskCountMessage(int taskCount) {
         if (taskCount <= 1) {
             return "You now have " + taskCount + " task in the list";

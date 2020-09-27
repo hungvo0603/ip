@@ -19,6 +19,11 @@ public enum Command {
     public static Command commandType;
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    /**
+     * Get input command from the user
+     *
+     * @return command that user input
+     */
     public static String getCommand() {
         System.out.print("Hung: ");
         String inputLine = SCANNER.nextLine();
@@ -38,6 +43,13 @@ public enum Command {
         return inputLine;
     }
 
+    /**
+     * Get command type of the command
+     * Including: list, bye, deadline, event, done, delete, find, todo
+     *
+     * @param command the line that the user input
+     * @throws DukeException when the command doesn't fall into any type
+     */
     public static void getCommandType (String command) throws DukeException {
         String[] slicedInput = command.split(" ", 2);
 

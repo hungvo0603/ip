@@ -1,11 +1,8 @@
-package duke.tasklist;
+package duke.task;
 
+import duke.constants.Constants;
 import duke.exception.DukeException;
 import duke.exception.ErrorMessage;
-import duke.task.Deadline;
-import duke.task.Event;
-import duke.task.Task;
-import duke.task.Todo;
 import duke.ui.TextUI;
 import duke.parser.Parser;
 
@@ -18,10 +15,20 @@ import java.util.stream.Collectors;
 public class TaskList {
     public static final ArrayList<Task> tasks = new ArrayList<>();
 
+    /**
+     * Returns number of tasks in the user's list
+     *
+     * @return number of tasks
+     */
     public static int getNumberOfTasks() {
         return tasks.size();
     }
 
+    /**
+     * Add a new event task from user's command to the list.
+     *
+     * @param command should be in the structure: event description /at YYYY-MM-DD HHMM
+     */
     public static void addEventTaskFromInput(String command) {
         try {
             String description = Parser.getDeadlineAndEventDescription(command, "/at");
@@ -39,6 +46,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Add a new deadline task from user's command to the list.
+     *
+     * @param command should be in the structure: deadline description /by YYYY-MM-DD HHMM
+     */
     public static void addDeadlineTaskFromInput(String command) {
         try {
             String description = Parser.getDeadlineAndEventDescription(command, "/by");
@@ -56,6 +68,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Add a new to-do task from user's command to the list.
+     *
+     * @param command should be in the structure: todo description
+     */
     public static void addTodoTaskFromInput(String command) {
         try {
             String description = Parser.getTodoAndFindDescription(command);
@@ -66,6 +83,13 @@ public class TaskList {
         }
     }
 
+    /**
+     * Append the tasks list with a new Deadline tasks
+     *
+     * @param description Deadline title
+     * @param date Deadline date
+     * @param time Deadline time
+     */
     public static void writeDeadlineTaskToList(String description, LocalDate date, LocalTime time) {
         Task t = new Deadline(description, date, time);
         tasks.add(t);
@@ -76,11 +100,21 @@ public class TaskList {
         tasks.add(t);
     }
 
+    /**
+     * Append the tasks list with a new Todo tasks
+     *
+     * @param description to-do description
+     */
     public static void writeTodoTaskToList(String description) {
         Task t = new Todo(description);
         tasks.add(t);
     }
 
+    /**
+     * Delete a task at a specific position
+     *
+     * @param command "delete 1" deletes the first task in the list
+     */
     public static void deleteTask(String command) {
         try {
             int taskNumber = Integer.parseInt(command.substring(7)) - 1;
@@ -94,6 +128,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Set a task as completed at a specific position
+     *
+     * @param command "done 1" sets the first task in the list  as done
+     */
     public static void setTaskAsDone(String command) {
         try {
             int taskNumber = Integer.parseInt(command.substring(5)) - 1;
@@ -106,32 +145,11 @@ public class TaskList {
         }
     }
 
-    public static void printFoundTask(String command) {
-        try {
-            String word = Parser.getTodoAndFindDescription(command);
-            ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasks.stream()
-                    .filter((s) -> s.getDescription().contains(word))
-                    .collect(Collectors.toList());
-            printNumberOfMatchingTasks(filteredTaskList.size());
-            for (int i = 1; i <= filteredTaskList.size(); i = i + 1) {
-                System.out.printf("%d. %s\n", i, filteredTaskList.get(i-1).toString());
-            }
-        } catch (DukeException e) {
-            System.out.println("Syntax error");
-        }
-    }
-
-    private static void printNumberOfMatchingTasks(int size) {
-        if (size == 0) {
-            System.out.println("!bot: No matching task found in your list");
-        } else if (size == 1) {
-            System.out.println("!bot: There is one matching task in your list");
-        } else {
-            System.out.printf("!bot: There are %d matching tasks in your list\n", size);
-        }
-    }
-
-    public static void printTaskList () {
+    /**
+     * Print all the tasks in the list
+     * Print a notification if there is no task in the list
+     */
+    public static void printTaskList() {
         int taskCount = tasks.size();
 
         System.out.println("-----------------------------------------");
@@ -148,5 +166,34 @@ public class TaskList {
         }
 
         System.out.println("-----------------------------------------");
+    }
+
+    public static void printFoundTask(String command) {
+        try {
+            String word = Parser.getTodoAndFindDescription(command);
+            ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasks.stream()
+                    .filter((s) -> s.getDescription().contains(word))
+                    .collect(Collectors.toList());
+            printNumberOfMatchingTasks(filteredTaskList.size());
+            for (int i = 1; i <= filteredTaskList.size(); i = i + 1) {
+                System.out.printf(" %d. %s\n", i, filteredTaskList.get(i-1).toString());
+            }
+            System.out.println(Constants.LINE_DIVIDER);
+        } catch (DukeException e) {
+            System.out.println("Syntax error");
+        }
+    }
+
+    private static void printNumberOfMatchingTasks(int size) {
+        if (size == 0) {
+            System.out.println(Constants.LINE_DIVIDER);
+            System.out.println("!bot: No matching task found in your list");
+        } else if (size == 1) {
+            System.out.println(Constants.LINE_DIVIDER);
+            System.out.println("!bot: There is one matching task in your list");
+        } else {
+            System.out.println(Constants.LINE_DIVIDER);
+            System.out.printf("!bot: There are %d matching tasks in your list\n", size);
+        }
     }
 }
