@@ -1,12 +1,26 @@
 # !bot User Guide
 
-### 1. Introduction
+## Table of Contents
+
+[1. Introduction](../docs/README.md#1-introduction) <br>
+[2. Quick start](../docs/README.md#2-quick-start) <br>
+[3. Features](../docs/README.md#3-features) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Adding a task](../docs/README.md#31-adding-a-task-todo-deadline-event) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 Listing tasks](../docs/README.md#32-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3 Marking task as done](../docs/README.md#33-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Finding tasks](../docs/README.md#34-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5 Deleting a task](../docs/README.md#35-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.6 Exiting](../docs/README.md#36-exiting-bye) <br>
+[4. Command summary](../docs/README.md#4-command-summary)
+ 
+
+## 1. Introduction
 !bot is a **command-line (CLI) task list manager program** that helps the absent-minded 
 user to track their to-do, deadline and event tasks. !bot can be used by users that can
 type fast. !bot can also save your task list to a text file when you exit the program
 and load it the next time you enter the program.
 
-### 2. Quick start
+## 2. Quick start
 1. Ensure that you have `Java 11` or above installed in your computer.
 2. Download the iP.jar file here.
 3. Copy the .jar file to your preferable home folder for !bot.
@@ -16,9 +30,7 @@ something like this:
 
     ![Greetings](../docs/greetings.PNG)
 
-### 3. Features
-
-#### 3.0 Parameter format
+## 3. Features
 In command syntax, there will be parameters in CAPITAL. Those will be provided by the user.
 * DESCRIPTION: a string representing the content of the task.
 * DATE: a string representing the date of Deadline and Event tasks. 
@@ -35,7 +47,7 @@ The format should be HHMM where
 * INDEX: an integer representing the index of the task in the list.
 * KEYWORD: a string representing the words to be searched in the task list.
 
-#### 3.1 Adding a task: `todo`, `deadline`, `event`
+### 3.1 Adding a task: `todo`, `deadline`, `event`
 Tell !bot to add a new task to its database. There are three types of task you can add:
 * **`todo`**: add a to-do to the list
   * Syntax: `todo DESCRIPTION`
@@ -58,14 +70,14 @@ Tell !bot to add a new task to its database. There are three types of task you c
   
     ![Add Event Task](../docs/addEvent.PNG)
     
-#### 3.2 Listing tasks: `list`
+### 3.2 Listing tasks: `list`
 List all the tasks that the user has in the list.
 * Syntax: `list`
 * Expected output:
   
   ![List Command](../docs/list.PNG)
   
-#### 3.3 Marking a task as done: `done`
+### 3.3 Marking a task as done: `done`
 Mark a task as done when the user has finished the task.
 * Syntax: `done INDEX`
 * Example of usage: `done 1`
@@ -73,7 +85,7 @@ Mark a task as done when the user has finished the task.
 
   ![Done Command](../docs/done.PNG)
 
-#### 3.4 Finding tasks: `find`
+### 3.4 Finding tasks: `find`
 Find all the tasks which contains a specific keyword.
 * Syntax: `find KEYWORD`
 * Example of usage: `find CS2113T`
@@ -81,7 +93,7 @@ Find all the tasks which contains a specific keyword.
 
   ![Find Command](../docs/find.PNG)
 
-#### 3.5 Deleting a task: `delete`
+### 3.5 Deleting a task: `delete`
 Delete a task in a specific index.
 * Syntax: `delete INDEX`
 * Example of usage: `delete 1`
@@ -89,14 +101,14 @@ Delete a task in a specific index.
 
   ![Delete Command](../docs/delete.PNG)
 
-#### 3.6 Exiting !bot: `bye`
+### 3.6 Exiting: `bye`
 Stop !bot and save all the tasks to hard disk.
 * Syntax: `bye`
 * Expected output:
 
   ![Bye Command](../docs/bye.PNG)
 
-### 4. Command summary
+## 4. Command summary
 Following is the summary of all available features in !bot program.
 
 Feature       | Syntax and Example
