@@ -1,7 +1,18 @@
 # !bot User Guide
 
 ## Table of Contents
-{:toc}
+
+[1. Introduction](https://github.com/hungvo0603/ip/tree/master/docs#1-introduction) <br>
+[2. Quick start](https://github.com/hungvo0603/ip/tree/master/docs#2-quick-start) <br>
+[3. Features](https://github.com/hungvo0603/ip/tree/master/docs#3-features) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Adding a task](https://github.com/hungvo0603/ip/tree/master/docs#31-adding-a-task-todo-deadline-event) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 Listing tasks](https://github.com/hungvo0603/ip/tree/master/docs#32-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3 Marking task as done](https://github.com/hungvo0603/ip/tree/master/docs#33-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Finding tasks](https://github.com/hungvo0603/ip/tree/master/docs#34-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5 Deleting a task](https://github.com/hungvo0603/ip/tree/master/docs#35-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.6 Exiting](https://github.com/hungvo0603/ip/tree/master/docs#36-exiting-bye) <br>
+[4. Command summary](https://github.com/hungvo0603/ip/tree/master/docs#4-command-summary)
+ 
 
 ## 1. Introduction
 !bot is a **command-line (CLI) task list manager program** that helps the absent-minded 
