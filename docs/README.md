@@ -2,16 +2,16 @@
 
 ## Table of Contents
 
-[1. Introduction](../docs/README.md#1-introduction) <br>
-[2. Quick start](../docs/README.md#2-quick-start) <br>
-[3. Features](../docs/README.md#3-features) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Adding a task](../docs/README.md#31-adding-a-task-todo-deadline-event) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.2 Listing tasks](../docs/README.md#32-listing-tasks-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3 Marking task as done](../docs/README.md#33-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Finding tasks](../docs/README.md#34-finding-tasks-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5 Deleting a task](../docs/README.md#35-deleting-a-task-delete) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.6 Exiting](../docs/README.md#36-exiting-bye) <br>
-[4. Command summary](../docs/README.md#4-command-summary)
+[1. Introduction](https://github.com/hungvo0603/ip/tree/master/docs#1-introduction) <br>
+[2. Quick start](https://github.com/hungvo0603/ip/tree/master/docs#2-quick-start) <br>
+[3. Features](https://github.com/hungvo0603/ip/tree/master/docs#3-features) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Adding a task](https://github.com/hungvo0603/ip/tree/master/docs#31-adding-a-task-todo-deadline-event) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 Listing tasks](https://github.com/hungvo0603/ip/tree/master/docs#32-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3 Marking task as done](https://github.com/hungvo0603/ip/tree/master/docs#33-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Finding tasks](https://github.com/hungvo0603/ip/tree/master/docs#34-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5 Deleting a task](https://github.com/hungvo0603/ip/tree/master/docs#35-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.6 Exiting](https://github.com/hungvo0603/ip/tree/master/docs#36-exiting-bye) <br>
+[4. Command summary](https://github.com/hungvo0603/ip/tree/master/docs#4-command-summary)
  
 
 ## 1. Introduction
@@ -28,7 +28,7 @@ and load it the next time you enter the program.
 Command Prompt (Windows) or on Terminal (MacOS). If the setup is correct, you should see
 something like this:
 
-    ![Greetings](../docs/greetings.PNG)
+    ![Greetings](https://github.com/hungvo0603/ip/blob/master/docs/greetings.PNG)
 
 ## 3. Features
 In command syntax, there will be parameters in CAPITAL. Those will be provided by the user.
@@ -54,28 +54,28 @@ Tell !bot to add a new task to its database. There are three types of task you c
   * Example of usage: `todo CS2113T iP README.md`
   * Expected output: 
 
-    ![Add Todo Task](../docs/addTodo.PNG)
+    ![Add Todo Task](https://github.com/hungvo0603/ip/blob/master/docs/addTodo.PNG)
     
 * **`deadline`**: add a deadline to the list
   * Syntax: `deadline DESCRIPTION /by DATE TIME`
   * Example of usage: `deadline CS2113T iP /by 02/10/2020 2359`
   * Expected output:
   
-    ![Add Deadline Task](../docs/addDeadline.PNG)
+    ![Add Deadline Task](https://github.com/hungvo0603/ip/blob/master/docs/addDeadline.PNG)
     
 * **`event`**: add an event to the list
   * Syntax: `event DESCRIPTION /at DATE TIME`
   * Example of usage: `event Birthday party /at 27/10/2020 1830`
   * Expected output:
   
-    ![Add Event Task](../docs/addEvent.PNG)
+    ![Add Event Task](https://github.com/hungvo0603/ip/blob/master/docs/addEvent.PNG)
     
 ### 3.2 Listing tasks: `list`
 List all the tasks that the user has in the list.
 * Syntax: `list`
 * Expected output:
   
-  ![List Command](../docs/list.PNG)
+  ![List Command](https://github.com/hungvo0603/ip/blob/master/docs/list.PNG)
   
 ### 3.3 Marking a task as done: `done`
 Mark a task as done when the user has finished the task.
@@ -83,7 +83,7 @@ Mark a task as done when the user has finished the task.
 * Example of usage: `done 1`
 * Expected output:
 
-  ![Done Command](../docs/done.PNG)
+  ![Done Command](https://github.com/hungvo0603/ip/blob/master/docs/done.PNG)
 
 ### 3.4 Finding tasks: `find`
 Find all the tasks which contains a specific keyword.
@@ -91,7 +91,7 @@ Find all the tasks which contains a specific keyword.
 * Example of usage: `find CS2113T`
 * Expected output:
 
-  ![Find Command](../docs/find.PNG)
+  ![Find Command](https://github.com/hungvo0603/ip/blob/master/docs/find.PNG)
 
 ### 3.5 Deleting a task: `delete`
 Delete a task in a specific index.
@@ -99,14 +99,14 @@ Delete a task in a specific index.
 * Example of usage: `delete 1`
 * Expected output:
 
-  ![Delete Command](../docs/delete.PNG)
+  ![Delete Command](https://github.com/hungvo0603/ip/blob/master/docs/delete.PNG)
 
 ### 3.6 Exiting: `bye`
 Stop !bot and save all the tasks to hard disk.
 * Syntax: `bye`
 * Expected output:
 
-  ![Bye Command](../docs/bye.PNG)
+  ![Bye Command](https://github.com/hungvo0603/ip/blob/master/docs/bye.PNG)
 
 ## 4. Command summary
 Following is the summary of all available features in !bot program.
