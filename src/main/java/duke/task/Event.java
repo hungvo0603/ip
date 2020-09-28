@@ -5,7 +5,6 @@ import duke.constants.Constants;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Event extends Task {
 
@@ -27,7 +26,8 @@ public class Event extends Task {
 
     public String getTime() {
         String time = this.time.toString();
-        return date + " " + time.substring(0, 2) + time.substring(3);
+        return date.format(DateTimeFormatter.ofPattern(Constants.INPUT_DATE_FORMAT))
+                + " " + time.substring(0, 2) + time.substring(3);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (at: " +
-                date.format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + " " +
-                time.format(DateTimeFormatter.ofPattern(Constants.TIME_FORMAT)) + ")";
+                date.format(DateTimeFormatter.ofPattern(Constants.OUTPUT_DATE_FORMAT)) + " " +
+                time.format(DateTimeFormatter.ofPattern(Constants.OUTPUT_TIME_FORMAT)) + ")";
     }
 }

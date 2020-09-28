@@ -1,14 +1,15 @@
 package duke.constants;
 
 public class Constants {
-    public static final String DATE_FORMAT = "MMM dd yyyy";
-    public static final String TIME_FORMAT = "hh:mm a";
+    public static final String INPUT_DATE_FORMAT = "dd/MM/yyyy";
+    public static final String OUTPUT_DATE_FORMAT = "MMM dd yyyy";
+    public static final String OUTPUT_TIME_FORMAT = "hh:mm a";
     public static final String TICK_ICON = "[\u2713]";
     public static final String CROSS_ICON = "[\u2718]";
     public static final String LINE_DIVIDER = "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|";
     public static final String BOT_INVALID_COMMAND = "!bot: invalid command: ";
-    public static final String SAMPLE_DEADLINE_COMMAND = "sample: deadline deadlineDescription /by YYYY-MM-DD HHMM";
-    public static final String SAMPLE_EVENT_COMMAND = "sample: event eventDescription /at YYYY-MM-DD HHMM";
+    public static final String SAMPLE_DEADLINE_COMMAND = "sample: deadline deadlineDescription /by DD/MM/YYYY HHMM";
+    public static final String SAMPLE_EVENT_COMMAND = "sample: event eventDescription /at DD/MM/YYYY HHMM";
     public static final String SAMPLE_TODO_COMMAND = "sample: todo todoDescription";
     public static final String SAMPLE_FIND_COMMAND = "sample: find grass";
     public static final String COMMAND_LIST = "commands: todo, event, deadline, done, list, find, delete, bye";

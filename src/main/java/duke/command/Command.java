@@ -28,12 +28,12 @@ public enum Command {
      * @return command that user input
      */
     public static String getCommand() {
-        System.out.print("Hung: ");
+        System.out.print("!man: ");
         String inputLine = SCANNER.nextLine();
 
         while (inputLine.trim().isEmpty()) {
             ErrorMessage.printNullCommandErrorMessage();
-            System.out.print("Hung: ");
+            System.out.print("!man: ");
             inputLine = SCANNER.nextLine();
         }
 

@@ -1,10 +1,12 @@
 package duke.parser;
 
+import duke.constants.Constants;
 import duke.exception.DukeException;
 import duke.exception.ErrorMessage;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Parser {
@@ -41,7 +43,7 @@ public class Parser {
         if (str.length != 2) {
             throw new DukeException();
         }
-        return LocalDate.parse(str[0]);
+        return LocalDate.parse(str[0], DateTimeFormatter.ofPattern(Constants.INPUT_DATE_FORMAT));
     }
 
     /**
