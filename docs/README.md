@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-[1. Introduction](#1.-introduction) <br>
-[2. Quick start](#2.-Quick-start) <br>
-[3. Features](#3.-features) <br>
+[1. Introduction](#1-introduction) <br>
+[2. Quick start](#2-quick-start) <br>
+[3. Features](#3-features) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Adding a task](#31-adding-a-task-todo-deadline-event) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 Listing tasks](#32-listing-tasks-list) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Marking task as done](#33-marking-a-task-as-done-done) <br>
