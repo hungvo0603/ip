@@ -2,6 +2,9 @@ package duke.exception;
 
 import duke.constants.Constants;
 
+/**
+ * Contains print format for general error messages
+ */
 public class ErrorMessage {
 
     public static void printDeadlineSyntaxCommandMessage(String command) {
@@ -34,13 +37,13 @@ public class ErrorMessage {
 
     public static void printInvalidInputMessage() {
         System.out.println(Constants.LINE_DIVIDER);
-        System.out.println(Constants.BOT_INVALID_INPUT);
+        System.out.println(Constants.INVALID_INPUT_ERROR);
         System.out.println(Constants.LINE_DIVIDER);
     }
 
     public static void printDateTimeFormatErrorMessage() {
         System.out.println(Constants.LINE_DIVIDER);
-        System.out.println(Constants.DATETIME_FORMAT_ERROR_MESSAGE);
+        System.out.println(Constants.DATETIME_FORMAT_ERROR);
         System.out.println(Constants.LINE_DIVIDER);
     }
 
@@ -72,7 +75,7 @@ public class ErrorMessage {
 
     public static void printDateNotProvidedErrorMessage() {
         System.out.println(Constants.LINE_DIVIDER);
-        System.out.println(Constants.NO_DATE_PROVIDED);
+        System.out.println(Constants.NO_DATE_PROVIDED_ERROR);
         System.out.println(Constants.LINE_DIVIDER);
     }
 

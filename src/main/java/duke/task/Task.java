@@ -8,7 +8,7 @@ public abstract class Task {
     protected boolean isDone;
 
     /**
-     * Construct a new Task object
+     * Constructs a new Task object
      * By default, done status is set to false
      *
      * @param description Task description
@@ -35,7 +35,7 @@ public abstract class Task {
     }
 
     /**
-     * Override toString method of Object class
+     * Overrides toString method of Object class
      *
      * @return status icon and task description
      */

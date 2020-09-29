@@ -24,7 +24,7 @@ public enum Command {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     /**
-     * Get input command from the user
+     * Gets input command from the user
      *
      * @return command that user input
      */
@@ -48,8 +48,8 @@ public enum Command {
     }
 
     /**
-     * Get command type of the command
-     * Including: list, bye, deadline, event, done, delete, find, todo
+     * Gets command type of the command
+     * Including: list, bye, deadline, event, done, on, delete, find, todo
      *
      * @param command the line that the user input
      * @throws DukeException when the command doesn't fall into any type

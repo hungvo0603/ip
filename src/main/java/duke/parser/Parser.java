@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
 public class Parser {
 
     /**
-     * Slice the command to get date and time of Deadline and Event tasks
+     * Slices the command to get date and time of Deadline and Event tasks
      *
      * @param command Command of deadline and event to be sliced
      * @param delimiter /at for Event task, /by for Deadline task
@@ -31,7 +31,7 @@ public class Parser {
     }
 
     /**
-     * Get date for Deadline and Event tasks
+     * Gets date for Deadline and Event tasks
      *
      * @param dateAndTime String contains date and time
      * @return LocalDate of the date
@@ -47,7 +47,7 @@ public class Parser {
     }
 
     /**
-     * Get time for Deadline and Event tasks
+     * Gets time for Deadline and Event tasks
      * @param dateAndTime String contains date and time
      * @return LocalTime of time in hour:minute
      * @throws DukeException When the command is poorly constructed
@@ -75,7 +75,7 @@ public class Parser {
     }
 
     /**
-     * Slice the command to get description of Deadline and Event tasks
+     * Slices the command to get description of Deadline and Event tasks
      *
      * @param command Command of deadline and event to be sliced
      * @param delimiter /at for Event task, /by for Deadline task
@@ -101,7 +101,7 @@ public class Parser {
     }
 
     /**
-     * Slice the command to get a Todo task description
+     * Slices the command to get a Todo task description
      *
      * @param command command to be sliced
      * @return String illustrate to-do description

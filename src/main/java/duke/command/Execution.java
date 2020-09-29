@@ -5,7 +5,7 @@ import duke.task.TaskList;
 public class Execution {
 
     /**
-     * Continuously get commands from the user and execute them
+     * Continuously gets commands from the user and execute them
      */
     public static void executeCommands () {
         String command;
@@ -29,7 +29,7 @@ public class Execution {
                 TaskList.addEventTaskFromInput(command);
                 break;
             case FIND:
-                TaskList.printFoundTask(command);
+                TaskList.printFoundTaskByKeyword(command);
                 break;
             case ON:
                 TaskList.printTasksOnThisDate(command);

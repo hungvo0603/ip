@@ -24,8 +24,8 @@ public class Storage {
     public static final String FILE_PATH = "data/duke.txt";
 
     /**
-     * Create the path when the path is missing
-     * Load the data from file if file is already created
+     * Creates the path when the path is missing
+     * Loads the data from file if file is already created
      */
     public static void loadTasks() {
         File directory = new File("data");
@@ -44,7 +44,7 @@ public class Storage {
             } catch (IndexOutOfBoundsException e) {
                 ErrorMessage.printOutOfBoundsErrorMessage();
             } catch (DukeException e) {
-                System.out.println(Constants.PARSE_DATETIME_ERROR_MESSAGE);
+                System.out.println(Constants.PARSE_DATETIME_ERROR);
             }
         } catch (FileNotFoundException e) {
             System.out.println(Constants.CREATE_FILE_MESSAGE);
@@ -52,8 +52,8 @@ public class Storage {
     }
 
     /**
-     * Take in the data from a storage file line by line
-     * Proceed data and put them into the list
+     * Takes in the data from a storage file line by line
+     * Proceeds data and put them into the list
      *
      * @param s Global Scanner
      * @throws IndexOutOfBoundsException On error data in file
@@ -99,7 +99,7 @@ public class Storage {
     }
 
     /**
-     * Construct a string to be written in storage file when the user stops the program
+     * Constructs a string to be written in storage file when the user stops the program
      */
     public static void saveTasks() {
         String textToAdd = "";
@@ -121,12 +121,12 @@ public class Storage {
         try {
             writeToFile(textToAdd);
         } catch (IOException e) {
-            System.out.println(Constants.CANNOT_WRITE_TO_FILE);
+            System.out.println(Constants.WRITE_TO_FILE_ERROR);
         }
     }
 
     /**
-     * Overwrite data in storage file by the string prepared by {@link package.storage#saveTasks()}
+     * Overwrites data in storage file by the string prepared by {@link package.storage#saveTasks()}
      *
      * @param textToWrite String to overwrite the storage file
      * @throws IOException When file cannot be modified

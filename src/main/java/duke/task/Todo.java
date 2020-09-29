@@ -3,7 +3,7 @@ package duke.task;
 public class Todo extends Task {
 
     /**
-     * Construct a new Todo object inheriting from Task object
+     * Constructs a new Todo object inheriting from Task object
      *
      * @param description To-do description
      */
@@ -12,7 +12,7 @@ public class Todo extends Task {
     }
 
     /**
-     * Override toString method from Task class
+     * Overrides toString method from Task class
      *
      * @return task icon and description
      */

@@ -13,7 +13,7 @@ public class Deadline extends Task {
     protected LocalTime time;
 
     /**
-     * Construct an Deadline task inheriting from Task class
+     * Constructs an Deadline task inheriting from Task class
      *
      * @param description Deadline description
      * @param date Deadline date
@@ -36,7 +36,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Override {@link package.task#toString()}
+     * Overrides {@link package.task#toString()}
      *
      * @return task type, done status, description and time
      */

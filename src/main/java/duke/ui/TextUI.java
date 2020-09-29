@@ -43,7 +43,7 @@ public class TextUI {
     }
 
     /**
-     * Get string stating current number of task
+     * Gets string stating current number of task
      *
      * @param taskCount number of task count
      * @return String referring to total number of tasks

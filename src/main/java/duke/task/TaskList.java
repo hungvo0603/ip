@@ -26,7 +26,7 @@ public class TaskList {
     }
 
     /**
-     * Add a new event task from user's command to the list.
+     * Adds a new event task from user's command to the list.
      *
      * @param command should be in the structure: event description /at YYYY-MM-DD HHMM
      */
@@ -46,7 +46,7 @@ public class TaskList {
     }
 
     /**
-     * Add a new deadline task from user's command to the list.
+     * Adds a new deadline task from user's command to the list.
      *
      * @param command should be in the structure: deadline description /by YYYY-MM-DD HHMM
      */
@@ -66,7 +66,7 @@ public class TaskList {
     }
 
     /**
-     * Add a new to-do task from user's command to the list.
+     * Adds a new to-do task from user's command to the list.
      *
      * @param command should be in the structure: todo description
      */
@@ -81,7 +81,7 @@ public class TaskList {
     }
 
     /**
-     * Append the tasks list with a new Deadline tasks
+     * Appends the tasks list with a new Deadline tasks
      *
      * @param description Deadline title
      * @param date Deadline date
@@ -98,7 +98,7 @@ public class TaskList {
     }
 
     /**
-     * Append the tasks list with a new Todo tasks
+     * Appends the tasks list with a new Todo tasks
      *
      * @param description to-do description
      */
@@ -108,7 +108,7 @@ public class TaskList {
     }
 
     /**
-     * Delete a task at a specific position
+     * Deletes a task at a specific position
      *
      * @param command "delete 1" deletes the first task in the list
      */
@@ -126,7 +126,7 @@ public class TaskList {
     }
 
     /**
-     * Set a task as completed at a specific position
+     * Sets a task as completed at a specific position
      *
      * @param command "done 1" sets the first task in the list  as done
      */
@@ -143,8 +143,8 @@ public class TaskList {
     }
 
     /**
-     * Print all the tasks in the list
-     * Print a notification if there is no task in the list
+     * Prints all the tasks in the list
+     * Prints a notification if there is no task in the list
      */
     public static void printTaskList() {
         int taskCount = tasks.size();
@@ -165,7 +165,12 @@ public class TaskList {
         System.out.println(Constants.LINE_DIVIDER);
     }
 
-    public static void printFoundTask(String command) {
+    /**
+     * Prints all task found by keywords
+     *
+     * @param command string containing command type and keyword
+     */
+    public static void printFoundTaskByKeyword(String command) {
         try {
             String word = Parser.getTodoAndFindDescription(command);
             ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasks.stream()
@@ -181,6 +186,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Prints all tasks found on a specific date
+     *
+     * @param command string containing command type and date
+     */
     public static void printTasksOnThisDate(String command) {
         try {
             String[] words = command.split(" ", 2);
