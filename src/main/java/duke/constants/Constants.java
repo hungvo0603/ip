@@ -8,8 +8,8 @@ public class Constants {
     public static final String OUTPUT_DATE_FORMAT = "MMM dd yyyy";
     public static final String OUTPUT_TIME_FORMAT = "hh:mm a";
 
-    public static final String TICK_ICON = "/";
-    public static final String CROSS_ICON = "x";
+    public static final String TICK_ICON = "[/]";
+    public static final String CROSS_ICON = "[x]";
 
     public static final String BOT_INVALID_COMMAND = "!bot: invalid command: ";
     public static final String SAMPLE_DEADLINE_COMMAND = "sample: deadline deadlineDescription /by DD/MM/YYYY HHMM";
