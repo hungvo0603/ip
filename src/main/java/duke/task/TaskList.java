@@ -137,8 +137,10 @@ public class TaskList {
             TextUI.printSetTaskDoneMessage(tasks.get(taskNumber));
         } catch (NumberFormatException e) {
             ErrorMessage.printNumberFormatErrorMessage();
-        } catch (NullPointerException | ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
+        } catch (NullPointerException | IndexOutOfBoundsException e) {
             ErrorMessage.printOutOfBoundsErrorMessage();
+        } catch (DukeException e) {
+            ErrorMessage.printTaskAlreadySetDone();
         }
     }
 

@@ -25,6 +25,7 @@ public class Constants {
     public static final String CREATE_DIRECTORY_MESSAGE = "!bot: A directory has just been created: data";
     public static final String CREATE_FILE_MESSAGE = "!bot: initialize saving file...";
     public static final String NO_TASK_MESSAGE = "There is no task in the list for now.";
+    public static final String ALREADY_DONE_MESSAGE = "!bot: this task is already set as done before.";
 
     public static final String NO_TASK_FOUND = "!bot: No matching task found in your list";
     public static final String ONE_TASK_FOUND = "!bot: There is one matching task in your list";

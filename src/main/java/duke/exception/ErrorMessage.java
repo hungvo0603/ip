@@ -85,4 +85,10 @@ public class ErrorMessage {
         System.out.println(Constants.LINE_DIVIDER);
     }
 
+    public static void printTaskAlreadySetDone() {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.ALREADY_DONE_MESSAGE);
+        System.out.println(Constants.LINE_DIVIDER);
+    }
+
 }

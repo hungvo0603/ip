@@ -1,6 +1,7 @@
 package duke.task;
 
 import duke.constants.Constants;
+import duke.exception.DukeException;
 
 public abstract class Task {
 
@@ -22,8 +23,12 @@ public abstract class Task {
         return description;
     }
 
-    public void setDone() {
-        isDone = true;
+    public void setDone() throws DukeException {
+        if (!isDone) {
+            isDone = true;
+        } else {
+            throw new DukeException();
+        }
     }
 
     public boolean isDone() {
