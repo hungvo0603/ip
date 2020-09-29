@@ -23,7 +23,7 @@ and load it the next time you enter the program.
 
 ## 2. Quick start
 1. Ensure that you have `Java 11` or above installed in your computer.
-2. Download the iP.jar file [here](https://github.com/hungvo0603/ip/releases/download/v0.2/iP.jar).
+2. Download the iP.jar file by clicking [here](https://github.com/hungvo0603/ip/releases/download/v0.2/iP.jar).
 3. Copy the .jar file to your preferable home folder for !bot.
 4. Launch the .jar file in the !bot home folder by using `java -jar iP.jar` command on 
 Command Prompt (Windows) or on Terminal (MacOS). If the setup is correct, you should see

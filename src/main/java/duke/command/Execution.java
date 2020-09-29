@@ -5,7 +5,7 @@ import duke.task.TaskList;
 public class Execution {
 
     /**
-     * Continuously gets commands from the user and execute them
+     * Continuously gets commands from the user and executes them
      */
     public static void executeCommands () {
         String command;

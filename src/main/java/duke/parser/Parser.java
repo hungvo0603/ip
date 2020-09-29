@@ -101,7 +101,7 @@ public class Parser {
     }
 
     /**
-     * Slices the command to get a Todo task description
+     * Slices the command to get a todo task description
      *
      * @param command command to be sliced
      * @return String illustrate to-do description

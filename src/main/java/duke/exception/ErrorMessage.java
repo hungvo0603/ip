@@ -3,7 +3,7 @@ package duke.exception;
 import duke.constants.Constants;
 
 /**
- * Contains print format for general error messages
+ * Contains print formats for general error messages
  */
 public class ErrorMessage {
 

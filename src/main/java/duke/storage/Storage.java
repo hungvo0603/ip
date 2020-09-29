@@ -55,7 +55,7 @@ public class Storage {
      * Takes in the data from a storage file line by line
      * Proceeds data and put them into the list
      *
-     * @param s Global Scanner
+     * @param s Global scanner
      * @throws IndexOutOfBoundsException On error data in file
      */
     public static void readDataFromFile (Scanner s) throws IndexOutOfBoundsException, DukeException {

@@ -24,7 +24,7 @@ public enum Command {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     /**
-     * Gets input command from the user
+     * Gets input commands from the user
      *
      * @return command that user input
      */

@@ -37,7 +37,7 @@ public class Event extends Task {
     /**
      * Overrides {@link package.task#toString()}
      *
-     * @return task type, done status, description and time
+     * @return task type, done status, description, date and time
      */
     @Override
     public String toString() {

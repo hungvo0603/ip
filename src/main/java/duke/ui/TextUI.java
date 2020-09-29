@@ -46,7 +46,7 @@ public class TextUI {
      * Gets string stating current number of task
      *
      * @param taskCount number of task count
-     * @return String referring to total number of tasks
+     * @return String representing to total number of tasks
      */
     private static String getTaskCountMessage(int taskCount) {
         return (taskCount <= 1) ?
