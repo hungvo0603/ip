@@ -31,6 +31,9 @@ public class Execution {
             case FIND:
                 TaskList.printFoundTask(command);
                 break;
+            case ON:
+                TaskList.printTasksOnThisDate(command);
+                break;
             case DELETE:
                 TaskList.deleteTask(command);
                 break;

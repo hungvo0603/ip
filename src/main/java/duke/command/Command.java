@@ -15,6 +15,7 @@ public enum Command {
     EVENT,
     DONE,
     FIND,
+    ON,
     BYE,
     DELETE,
     ERROR;
@@ -77,6 +78,9 @@ public enum Command {
             break;
         case "find":
             commandType = Command.FIND;
+            break;
+        case "on":
+            commandType = Command.ON;
             break;
         case "delete":
             commandType = Command.DELETE;

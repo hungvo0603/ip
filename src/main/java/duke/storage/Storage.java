@@ -110,10 +110,10 @@ public class Storage {
                         + System.lineSeparator());
             } else if (t instanceof Deadline) {
                 textToAdd = textToAdd.concat("D | " + t.isDone() + " | " + t.getDescription()
-                        + " | " + ((Deadline) t).getTime() +  System.lineSeparator());
+                        + " | " + ((Deadline) t).getDeadlineTime() +  System.lineSeparator());
             } else if (t instanceof Event) {
                 textToAdd = textToAdd.concat("E | " + t.isDone() + " | " + t.getDescription()
-                        + " | " + ((Event) t).getTime() + System.lineSeparator());
+                        + " | " + ((Event) t).getEventTime() + System.lineSeparator());
             } else {
                 System.out.println(Constants.ERROR);
             }

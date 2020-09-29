@@ -8,6 +8,7 @@ import duke.parser.Parser;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -180,15 +181,36 @@ public class TaskList {
         }
     }
 
-    private static void printNumberOfMatchingTasks(int size) {
-        if (size == 0) {
+    public static void printTasksOnThisDate(String command) {
+        try {
+            String[] words = command.split(" ", 2);
+            for (int i = 0; i < words.length; i++) {
+                words[i] = words[i].trim();
+            }
+            LocalDate date = LocalDate.parse(words[1], DateTimeFormatter.ofPattern(Constants.INPUT_DATE_FORMAT));
+            ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasks.stream()
+                    .filter((s) -> ((s instanceof Deadline) && (((Deadline) s).getDate().compareTo(date) == 0)) ||
+                            ((s instanceof Event) && (((Event) s).getDate().compareTo(date) == 0)))
+                    .collect(Collectors.toList());
+            printNumberOfMatchingTasks(filteredTaskList.size());
+            for (int i = 1; i <= filteredTaskList.size(); i = i + 1) {
+                System.out.printf(" %d. %s\n", i, filteredTaskList.get(i-1).toString());
+            }
             System.out.println(Constants.LINE_DIVIDER);
+        } catch (IndexOutOfBoundsException e) {
+            ErrorMessage.printDateNotProvidedErrorMessage();
+        } catch (DateTimeParseException e) {
+           ErrorMessage.printDateFormatErrorMessage();
+        }
+    }
+
+    private static void printNumberOfMatchingTasks(int size) {
+        System.out.println(Constants.LINE_DIVIDER);
+        if (size == 0) {
             System.out.println(Constants.NO_TASK_FOUND);
         } else if (size == 1) {
-            System.out.println(Constants.LINE_DIVIDER);
             System.out.println(Constants.ONE_TASK_FOUND);
         } else {
-            System.out.println(Constants.LINE_DIVIDER);
             System.out.printf("!bot: There are %d matching tasks in your list\n", size);
         }
     }

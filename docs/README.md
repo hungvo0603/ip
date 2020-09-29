@@ -8,9 +8,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Adding a task](#31-adding-a-task-todo-deadline-event) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 Listing tasks](#32-listing-tasks-list) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Marking task as done](#33-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Finding tasks](#34-finding-tasks-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5 Deleting a task](#35-deleting-a-task-delete) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.6 Exiting](#36-exiting-bye) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Finding tasks by a keyword](#34-finding-tasks-by-a-keyword-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5 Finding tasks on a date](#35-finding-tasks-on-a-date-on) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.6 Deleting a task](#36-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.7 Exiting](#37-exiting-bye) <br>
 [4. Command summary](#4-command-summary)
  
 
@@ -85,7 +86,7 @@ Mark a task as done when the user has finished the task.
 
   ![Done Command](done.PNG)
 
-### 3.4 Finding tasks: `find`
+### 3.4 Finding tasks by a keyword: `find`
 Find all the tasks which contains a specific keyword.
 * Syntax: `find KEYWORD`
 * Example of usage: `find CS2113T`
@@ -93,7 +94,15 @@ Find all the tasks which contains a specific keyword.
 
   ![Find Command](find.PNG)
 
-### 3.5 Deleting a task: `delete`
+### 3.5 Finding tasks on a date: `on`
+Find all the tasks on a specific date.
+* Syntax: `on DATE`
+* Example of usage: `on 02/10/2020`
+* Expected output:
+
+  ![On Command](on.PNG)
+
+### 3.6 Deleting a task: `delete`
 Delete a task in a specific index.
 * Syntax: `delete INDEX`
 * Example of usage: `delete 1`
@@ -101,7 +110,7 @@ Delete a task in a specific index.
 
   ![Delete Command](delete.PNG)
 
-### 3.6 Exiting: `bye`
+### 3.7 Exiting: `bye`
 Stop !bot and save all the tasks to hard disk.
 * Syntax: `bye`
 * Expected output:
@@ -111,12 +120,13 @@ Stop !bot and save all the tasks to hard disk.
 ## 4. Command summary
 Following is the summary of all available features in !bot program.
 
-Feature       | Syntax and Example
+Feature | Syntax and Example
 ------------- | ---------------------------
-Add to list   | - `todo DESCRIPTION`<br>Example: todo exam<br><br>- `deadline DESCRIPTION /by DATE TIME`<br>Example: deadline assignment /by 02/10/2020 2359<br><br>- `event DESCRIPTION /at DATE TIME`<br>Example: event party /at 27/10/2020 1900 
-List tasks    | `list`
-Mark as done  | `done INDEX`<br>example: done 1
+Add to list | - `todo DESCRIPTION`<br>Example: todo exam<br><br>- `deadline DESCRIPTION /by DATE TIME`<br>Example: deadline assignment /by 02/10/2020 2359<br><br>- `event DESCRIPTION /at DATE TIME`<br>Example: event party /at 27/10/2020 1900 
+List tasks | `list`
+Mark as done | `done INDEX`<br>example: done 1
 Delete a task | `delete INDEX`
-Find tasks    | `find KEYWORD`<br>example: find CS2113T 
-Exit          | `bye`   
+Find tasks by a keyword | `find KEYWORD`<br>example: find CS2113T 
+Find tasks on a date | `on DATE`<br>example: on 27/10/2020
+Exit | `bye`   
 

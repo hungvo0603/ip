@@ -70,4 +70,16 @@ public class ErrorMessage {
         System.out.println(Constants.LINE_DIVIDER);
     }
 
+    public static void printDateNotProvidedErrorMessage() {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.NO_DATE_PROVIDED);
+        System.out.println(Constants.LINE_DIVIDER);
+    }
+
+    public static void printDateFormatErrorMessage() {
+        System.out.println(Constants.LINE_DIVIDER);
+        System.out.println(Constants.DATE_FORMAT_ERROR);
+        System.out.println(Constants.LINE_DIVIDER);
+    }
+
 }

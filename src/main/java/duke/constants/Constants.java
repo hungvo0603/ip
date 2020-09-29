@@ -30,4 +30,6 @@ public class Constants {
     public static final String NO_TASK_MESSAGE = "There is no task in the list for now.";
     public static final String NO_TASK_FOUND = "!bot: No matching task found in your list";
     public static final String ONE_TASK_FOUND = "!bot: There is one matching task in your list";
+    public static final String NO_DATE_PROVIDED = "!bot: date is not provided";
+    public static final String DATE_FORMAT_ERROR = "!bot: date format is poorly constructed";;
 }

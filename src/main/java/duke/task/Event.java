@@ -16,18 +16,22 @@ public class Event extends Task {
      *
      * @param description Event description
      * @param date Event date
-     * @param eventTime Event time
+     * @param time Event time
      */
-    public Event(String description, LocalDate date, LocalTime eventTime) {
+    public Event(String description, LocalDate date, LocalTime time) {
         super(description);
         this.date = date;
-        this.time = eventTime;
+        this.time = time;
     }
 
-    public String getTime() {
+    public String getEventTime() {
         String time = this.time.toString();
         return date.format(DateTimeFormatter.ofPattern(Constants.INPUT_DATE_FORMAT))
                 + " " + time.substring(0, 2) + time.substring(3);
+    }
+
+    public LocalDate getDate() {
+        return this.date;
     }
 
     /**

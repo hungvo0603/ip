@@ -25,10 +25,14 @@ public class Deadline extends Task {
         this.date = date;
     }
 
-    public String getTime() {
+    public String getDeadlineTime() {
         String time = this.time.toString();
         return date.format(DateTimeFormatter.ofPattern(Constants.INPUT_DATE_FORMAT)) +
                 " " + time.substring(0, 2) + time.substring(3);
+    }
+
+    public LocalDate getDate() {
+        return this.date;
     }
 
     /**
