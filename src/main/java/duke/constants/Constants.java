@@ -31,9 +31,9 @@ public class Constants {
     public static final String ONE_TASK_FOUND = "!bot: There is one matching task in your list";
 
     public static final String NULL_COMMAND_ERROR = "!bot: command cannot be empty! Please try another command!";
-    public static final String ERROR = "!bot: ERROR";
-    public static final String INVALID_TASK_NUMBER_ERROR = "Task number is not valid";
-    public static final String TASK_NUMBER_FORMAT_ERROR = "Task number should be an integer";
+    public static final String ERROR = "!bot: ERROR OCCURRED IN IMPORT TASK";
+    public static final String INVALID_TASK_NUMBER_ERROR = "!bot: task number is not valid";
+    public static final String TASK_NUMBER_FORMAT_ERROR = "!bot: ask number should be an integer";
     public static final String NO_DATE_PROVIDED_ERROR = "!bot: date is not provided";
     public static final String DATE_FORMAT_ERROR = "!bot: date format is poorly constructed";;
     public static final String DATETIME_FORMAT_ERROR = "!bot: date/time format is invalid";

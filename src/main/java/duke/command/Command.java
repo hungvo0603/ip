@@ -39,12 +39,12 @@ public enum Command {
         }
 
         try {
-            getCommandType(inputLine);
+            getCommandType(inputLine.trim());
         } catch (DukeException e) {
             ErrorMessage.printCommandTypeErrorMessage();
         }
 
-        return inputLine;
+        return inputLine.trim();
     }
 
     /**
@@ -59,10 +59,20 @@ public enum Command {
 
         switch (slicedInput[0].toLowerCase().trim()) {
         case "list":
-            commandType = Command.LIST;
+            if (slicedInput.length == 1) {
+                commandType = Command.LIST;
+            } else {
+                commandType = Command.ERROR;
+                throw new DukeException();
+            }
             break;
         case "bye":
-            commandType = Command.BYE;
+            if (slicedInput.length == 1) {
+                commandType = Command.BYE;
+            } else {
+                commandType = Command.ERROR;
+                throw new DukeException();
+            }
             break;
         case "todo":
             commandType = Command.TODO;

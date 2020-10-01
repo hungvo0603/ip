@@ -118,6 +118,7 @@ public class Storage {
                 System.out.println(Constants.ERROR);
             }
         }
+
         try {
             writeToFile(textToAdd);
         } catch (IOException e) {
