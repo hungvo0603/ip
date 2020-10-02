@@ -1,62 +1,63 @@
-A directory has just been created: data
-Initialize saving file...
------------------------------------------
+!bot: saving directory: data/duke.txt
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
 Hello! I'm !bot
 What are your orders?
------------------------------------------
-Hung: -----------------------------------------
-!bot: invalid command type
-commands: todo, event, deadline, done, list, bye
------------------------------------------
-ERROR
-Hung: -----------------------------------------
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!bot: invalid command:
+commands: todo, deadline, event, done, list, find, on, delete, bye
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
-Added: [T][✘] iP
-You now have 1 task in the list.
------------------------------------------
-Hung: -----------------------------------------
+Added: [T][x] iP
+You now have 2 tasks in the list
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
-Added: [D][✘] tP (by: before tutorial at Wed 11pm)
-You now have 2 tasks in the list.
------------------------------------------
-Hung: -----------------------------------------
+Added: [D][x] tP (by: Sep 18 2020 07:00 PM)
+You now have 3 tasks in the list
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
-1. [T][✘] iP
-2. [D][✘] tP (by: before tutorial at Wed 11pm)
------------------------------------------
-Hung: -----------------------------------------
+1. [T][/] iP
+2. [T][x] iP
+3. [D][x] tP (by: Sep 18 2020 07:00 PM)
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
-Added: [E][✘] CS2113T project meeting (at: Wed 4pm on Zoom)
-You now have 3 tasks in the list.
------------------------------------------
-Hung: -----------------------------------------
+Added: [E][x] CS2113T project meeting (at: Dec 08 2020 10:00 PM)
+You now have 4 tasks in the list
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
-1. [T][✘] iP
-2. [D][✘] tP (by: before tutorial at Wed 11pm)
-3. [E][✘] CS2113T project meeting (at: Wed 4pm on Zoom)
------------------------------------------
-Hung: -----------------------------------------
+1. [T][/] iP
+2. [T][x] iP
+3. [D][x] tP (by: Sep 18 2020 07:00 PM)
+4. [E][x] CS2113T project meeting (at: Dec 08 2020 10:00 PM)
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!bot: this task is already set as done before.
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!bot: Nice! I've mark this task as done:
+ [D][/] tP (by: Sep 18 2020 07:00 PM)
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!bot: There is one matching task in your list
+ 1. [E][x] CS2113T project meeting (at: Dec 08 2020 10:00 PM)
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!bot: Noted. I've removed this tasks
+  [T][x] iP
+You now have 3 tasks in the list
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot:
-Nice! I've mark this task as done:
- [T][✓] iP
------------------------------------------
-Hung: -----------------------------------------
-!bot:
-Nice! I've mark this task as done:
- [E][✓] CS2113T project meeting (at: Wed 4pm on Zoom)
------------------------------------------
-Hung: -----------------------------------------
-!bot:
-Noted. I've removed this tasks
-[D][✘] tP (by: before tutorial at Wed 11pm)
-Now you have 2 tasks in the list
------------------------------------------
-Hung: -----------------------------------------
-!bot:
-1. [T][✓] iP
-2. [E][✓] CS2113T project meeting (at: Wed 4pm on Zoom)
------------------------------------------
-Hung: -----------------------------------------
+1. [T][/] iP
+2. [D][/] tP (by: Sep 18 2020 07:00 PM)
+3. [E][x] CS2113T project meeting (at: Dec 08 2020 10:00 PM)
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+!man: |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 !bot: ~~Dead is like a wind, always by my side~~
------------------------------------------
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
